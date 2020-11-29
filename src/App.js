@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import SingleGrid from "./components/SingleGrid.js";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  Container,
+} from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
+import TopBar from "./components/TopBar";
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="lg">
+      <div className="App">
+        <TopBar />
+        <SingleGrid />
+
+        <Body />
+      </div>
+    </Container>
   );
 }
 
