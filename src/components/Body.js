@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Grid } from "@material-ui/core";
+import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import SingleGrid from "./SingleGrid";
+import { TodayOutlined } from "@material-ui/icons";
 
-const Body = () => {
+const Body = ({ inputURLList }) => {
   return (
-    <Grid
-      container
-      spacing={2}
-      direction="row"
-      alignItems="stretch"
-      justify="center"
-    ></Grid>
+    <Grid container spacing={2} direction="row" alignItems="stretch">
+      {inputURLList.map((item, index) => (
+        <SingleGrid item={item} />
+      ))}
+    </Grid>
   );
 };
 

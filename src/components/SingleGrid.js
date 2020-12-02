@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Card, CardActionArea, Grid } from "@material-ui/core";
+import React from "react";
+import { Card, CardActionArea, Grid, Typography } from "@material-ui/core";
 
-const SingleGrid = () => {
+const SingleGrid = ({ item }) => {
   return (
-    <Grid>
+    <Grid item xs={12} sm={3}>
       <Card>
-        <CardActionArea>asasdsadasd</CardActionArea>
+        <Typography>{item.label}</Typography>
+        <Typography>{item.URL}</Typography>
       </Card>
     </Grid>
   );

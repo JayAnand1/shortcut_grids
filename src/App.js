@@ -1,31 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
-import SingleGrid from "./components/SingleGrid.js";
 import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  Container,
-} from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
+import { Container } from "@material-ui/core";
 import TopBar from "./components/TopBar";
 import Body from "./components/Body";
 
 function App() {
+  const [inputURL, setInputURL] = useState("");
+  const [inputLabel, setInputLabel] = useState("");
+  const [inputURLList, setInputURLList] = useState([]);
+
   return (
     <Container maxWidth="lg">
-      <div className="App">
-        <TopBar />
-        <SingleGrid />
-
-        <Body />
-      </div>
+      <TopBar
+        inputURL={inputURL}
+        setInputURL={setInputURL}
+        inputLabel={inputLabel}
+        setInputLabel={setInputLabel}
+        inputURLList={inputURLList}
+        setInputURLList={setInputURLList}
+      />
+      <Body inputURLList={inputURLList} />
     </Container>
   );
 }
