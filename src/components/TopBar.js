@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TextField from "@material-ui/core/TextField";
+import Radio from "@material-ui/core/Radio";
 
 const TopBar = ({
   inputURL,
@@ -18,6 +19,7 @@ const TopBar = ({
   setInputLabel,
   inputURLList,
   setInputURLList,
+  setOpenSnackBar,
 }) => {
   const [openInfo, setOpenInfo] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
@@ -59,6 +61,8 @@ const TopBar = ({
         id: Math.random() * 1000,
       },
     ]);
+    setOpenAdd(false);
+    setOpenSnackBar(true);
     console.log(inputURLList);
   };
 
@@ -99,6 +103,7 @@ const TopBar = ({
               variant="outlined"
               onChange={inputLabelHandler}
             />
+            &nbsp;
             <TextField
               size="small"
               fullWidth
@@ -108,6 +113,7 @@ const TopBar = ({
               onChange={inputURLHandler}
             />
           </DialogContent>
+
           <DialogActions>
             <Button onClick={submitDataHandler} color="primary" autoFocus>
               Add
