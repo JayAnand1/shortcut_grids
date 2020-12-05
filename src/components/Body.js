@@ -1,13 +1,16 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import SingleGrid from "./SingleGrid";
-import { TodayOutlined } from "@material-ui/icons";
+import FavouriteCard from "./FavouriteCard";
+import { Favorite, TodayOutlined } from "@material-ui/icons";
 
-const Body = ({ inputURLList }) => {
+const Body = (props) => {
+
   return (
     <Grid container spacing={2} direction="row" alignItems="stretch">
-      {inputURLList.map((item, index) => (
-        <SingleGrid item={item} />
+      {props.favouriteCards.map((item) => (
+
+        <FavouriteCard item={item} key={item.id} />
       ))}
     </Grid>
   );
