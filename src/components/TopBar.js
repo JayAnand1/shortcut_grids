@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -11,7 +11,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
-
+import SettingsIcon from "@material-ui/icons/Settings";
 const TopBar = ({
   inputURL,
   setInputURL,
@@ -21,8 +21,9 @@ const TopBar = ({
   setInputURLList,
   setOpenSnackBar,
 }) => {
-  const [openInfo, setOpenInfo] = React.useState(false);
-  const [openAdd, setOpenAdd] = React.useState(false);
+  const [openInfo, setOpenInfo] = useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [openSettings, setOpenSettings] = useState(false);
 
   const handleClickOpenInfo = () => {
     setOpenInfo(true);
@@ -38,6 +39,14 @@ const TopBar = ({
 
   const handleCloseAdd = () => {
     setOpenAdd(false);
+  };
+
+  const handleClickOpenSettings = () => {
+    setOpenSettings(true);
+  };
+
+  const handleCloseSettings = () => {
+    setOpenSettings(false);
   };
 
   const inputURLHandler = (e) => {
@@ -61,6 +70,7 @@ const TopBar = ({
         id: Math.random() * 1000,
       },
     ]);
+    setInputLabel("");
     setOpenAdd(false);
     setOpenSnackBar(true);
     console.log(inputURLList);
@@ -75,6 +85,9 @@ const TopBar = ({
         </IconButton>
         <IconButton onClick={handleClickOpenInfo}>
           <InfoOutlinedIcon />
+        </IconButton>
+        <IconButton onClick={handleClickOpenSettings}>
+          <SettingsIcon />
         </IconButton>
         <Dialog open={openInfo} onClose={handleCloseInfo}>
           <DialogTitle id="alert-dialog-title">
@@ -96,6 +109,7 @@ const TopBar = ({
           <DialogTitle id="alert-dialog-title">Add Shortcut Card</DialogTitle>
           <DialogContent>
             <TextField
+              required
               fullWidth
               size="small"
               id="inputLabelField"
@@ -105,6 +119,7 @@ const TopBar = ({
             />
             &nbsp;
             <TextField
+              required
               size="small"
               fullWidth
               id="inputURLField"
@@ -117,6 +132,20 @@ const TopBar = ({
           <DialogActions>
             <Button onClick={submitDataHandler} color="primary" autoFocus>
               Add
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={openSettings} onClose={handleCloseSettings}>
+          <DialogTitle id="alert-dialog-title">Settings </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Change background color from here
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseSettings} color="primary" autoFocus>
+              Close
             </Button>
           </DialogActions>
         </Dialog>
