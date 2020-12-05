@@ -6,12 +6,38 @@ import Body from "./components/Body";
 import MuiAlert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 import AddCard from "./components/AddCard";
+import { Grid, Typography } from "@material-ui/core";
+import FavouriteCard from "./components/FavouriteCard";
+import { Favorite, TodayOutlined } from "@material-ui/icons";
+
+
 
 class App extends Component {
 
   state = {
     favouriteCards: [], // {label, url, color, icon}
     dialogStatus: { type: '', active: false }, // {type, active}
+    showSnackBar: false,
+    snackBarMessage: "",
+    snackBarSeverity: ""
+  }
+
+  updateList = (newList) => {
+    localStorage.setItem('favourites', JSON.stringify(newList));
+  }
+
+  handleSnackBar = (message, severity) => {
+    this.setState({ showSnackBar: true });
+    this.setState({ snackBarMessage: message, snackBarSeverity: severity });
+  }
+
+  handleDelete = (id) => {
+    console.log(id);
+    let newList = this.state.favouriteCards.filter((item) => item.id !== id);
+    console.log(newList);
+    this.setState({ favouriteCards: newList });
+    this.updateList(newList);
+    this.handleSnackBar("Deleted Successfully", "info");
   }
 
   handleNewCard = (favouriteCard, dialog) => {
@@ -19,6 +45,7 @@ class App extends Component {
     const newFavouriteCards = this.state.favouriteCards.concat(favouriteCard);
     this.setState({ favouriteCards: newFavouriteCards });
     localStorage.setItem('favourites', JSON.stringify(newFavouriteCards));
+    this.handleSnackBar("Added Successfully", "success");
     this.handleDialogStatus(dialog);
   }
 
@@ -31,6 +58,9 @@ class App extends Component {
     var favouriteCards = JSON.parse(favourites) ?? [];
     this.setState({ favouriteCards });
   }
+
+
+
   render() {
     const { dialogStatus } = this.state.dialogStatus;
     return (
@@ -44,16 +74,21 @@ class App extends Component {
             onChangeDialogStatus={this.handleDialogStatus}
           />
         )}
-        <Body favouriteCards={this.state.favouriteCards} />
-        {/* <Snackbar
-          open={openSnackBar}
+        <Grid container spacing={2} direction="row" alignItems="stretch">
+          {this.state.favouriteCards.map((item) => (
+            <FavouriteCard item={item} key={item.id} onDelete={this.handleDelete} />
+          ))}
+        </Grid>
+        {/* <Body favouriteCards={this.state.favouriteCards}  /> */}
+
+        <Snackbar
+          open={this.state.showSnackBar}
           autoHideDuration={3000}
-          onClose={handleSnackBarClose}
+          onClose={() => this.setState({ showSnackBar: !this.state.showSnackBar })}
         >
-          <Alert onClose={handleSnackBarClose} severity="success">
-            Shortcut Card Added Sucessfully!
-        </Alert>
-        </Snackbar> */}
+          <MuiAlert onClose={() => !this.state.showSnackBar} elevation={6} variant="filled" severity={this.state.snackBarSeverity}>{this.state.snackBarMessage}</MuiAlert>
+
+        </Snackbar>
 
       </Container>
     );
@@ -61,51 +96,3 @@ class App extends Component {
 }
 
 export default App;
-
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
-
-// function App() {
-//   const [inputURL, setInputURL] = useState("");
-//   const [inputLabel, setInputLabel] = useState("");
-//   const [inputURLList, setInputURLList] = useState([]);
-//   const [openSnackBar, setOpenSnackBar] = useState(false);
-//   const [snackbarSeverity, setSnackBarSeverity] = useState('');
-//   const [snackBarMessage, setSnackBarMessage] = useState('');
-
-
-//   const handleSnackBarClose = () => {
-//     setOpenSnackBar(false);
-//   };
-
-
-
-//   return (
-//     <Container maxWidth="lg">
-//       <TopBar
-//         inputURL={inputURL}
-//         setInputURL={setInputURL}
-//         inputLabel={inputLabel}
-//         setInputLabel={setInputLabel}
-//         inputURLList={inputURLList}
-//         setInputURLList={setInputURLList}
-//         setOpenSnackBar={setOpenSnackBar}
-
-//       />
-//       <Body inputURLList={inputURLList} />
-//       <Snackbar
-//         open={openSnackBar}
-//         autoHideDuration={3000}
-//         onClose={handleSnackBarClose}
-//       >
-//         <Alert onClose={handleSnackBarClose} severity="success">
-//           Shortcut Card Added Sucessfully!
-//         </Alert>
-//       </Snackbar>
-
-//     </Container>
-//   );
-// }
-
-// export default App;

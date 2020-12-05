@@ -22,9 +22,14 @@ class AddCard extends Component {
         label: '',
         url: '',
         // icon: '',
-        // colour: '',
+        colour: '',
     }
 
+    inputColourHandler = (event) => {
+        console.log(event.target.value);
+        this.setState({ colour: event.target.value });
+
+    }
 
     inputURLHandler = (event) => {
         this.setState({ url: event.target.value });
@@ -60,10 +65,52 @@ class AddCard extends Component {
                     defaultValue="https://"
 
                 />
+            &nbsp;
+                <center>
+                    <div>
+                        <Radio
+                            style={{ color: "#4db6ac" }}
+                            checked={this.state.colour === "#4db6ac"}
+                            onChange={this.inputColourHandler}
+                            value="#4db6ac"
+                            size="small"
+                        />
+                        <Radio
+                            style={{ color: "#e57373" }}
+                            checked={this.state.colour === "#e57373"}
+                            onChange={this.inputColourHandler}
+                            value="#e57373"
+                            size="small"
+                        />
+                        <Radio
+                            style={{ color: "#4fc3f7" }}
+                            checked={this.state.colour === "#4fc3f7"}
+                            onChange={this.inputColourHandler}
+                            value="#4fc3f7"
+                            size="small"
+                        />
+                        <Radio
+                            style={{ color: "#ffb74d" }}
+                            checked={this.state.colour === "#ffb74d"}
+                            onChange={this.inputColourHandler}
+                            value="#ffb74d"
+                            color="default"
+                            size="small"
+                        />
+                        <Radio
+                            style={{ color: "#7986cb" }}
+                            checked={this.state.colour === "#7986cb"}
+                            onChange={this.inputColourHandler}
+                            value="#7986cb"
+                            color="default"
+                            size="small"
+                        />
+                    </div>
+                </center>
             </DialogContent>
 
             <DialogActions>
-                <Button onClick={() => this.props.onAddNewCard({ label: this.state.label, url: this.state.url }, { type: 'Add', active: false })} color="primary" autoFocus>
+                <Button onClick={() => this.props.onAddNewCard(this.state, { type: 'Add', active: false })} color="primary" autoFocus>
                     Add
           </Button>
             </DialogActions>
