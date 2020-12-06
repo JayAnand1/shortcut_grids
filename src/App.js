@@ -86,6 +86,7 @@ class App extends Component {
     return (
       <Container maxWidth="lg">
         <TopBar
+          dialogComplete={this.state.dialogStatus.active}
           onChangeDialogStatus={this.handleDialogStatus}
         />
         {this.state.dialogStatus.type === 'addCategory' && this.state.dialogStatus.active && (
