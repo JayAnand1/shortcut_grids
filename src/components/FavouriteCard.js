@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import {
     Card,
     CardActionArea,
@@ -9,9 +9,7 @@ import {
     IconButton
 } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
-import { deepOrange, deepPurple } from "@material-ui/core/colors";
-import Favicon from "react-favicon";
-import { HighlightOff } from "@material-ui/icons";
+import { MoreVert } from "@material-ui/icons";
 
 
 class FavouriteCard extends Component {
@@ -21,16 +19,14 @@ class FavouriteCard extends Component {
         id: this.props.item.id,
         label: this.props.item.label,
         url: this.props.item.url,
-        // icon: '',
         colour: this.props.item.colour,
     }
 
-    // style={{ width: 32, height: 32 }} src={this.state.url + "/favicon.ico"}
     render() {
         return (
             <Grid item xs={12} sm={4} md={3}>
                 <Card style={{ backgroundColor: this.state.colour }}>
-                    <CardHeader action={<IconButton style={{ color: "white" }} onClick={() => this.props.onDelete(this.state.id)}><HighlightOff /></IconButton>}></CardHeader>
+                    <CardHeader title={this.state.label} action={<IconButton style={{ color: "white" }} onClick={() => this.props.onDelete(this.state.id)}><MoreVert /></IconButton>}></CardHeader>
                     <CardActionArea href={this.state.url}>
                         <CardContent>
                             <Grid container spacing={2}>

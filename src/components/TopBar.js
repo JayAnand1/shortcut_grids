@@ -4,14 +4,25 @@ import IconButton from "@material-ui/core/IconButton";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import SettingsIcon from "@material-ui/icons/Settings";
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const TopBar = (props) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleAddClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleAddClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
         <Box flexGrow={1}></Box>
-        <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Add', active: true })}>
+        <IconButton onClick={handleAddClick}>
           <AddOutlinedIcon />
         </IconButton>
         <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Info', active: true })}>
@@ -20,6 +31,16 @@ const TopBar = (props) => {
         <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Settings', active: true })}>
           <SettingsIcon />
         </IconButton>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleAddClose}
+        >
+          <MenuItem onClick={() => props.onChangeDialogStatus({ type: 'addCategory', active: true })}>Add Category</MenuItem>
+          <MenuItem onClick={handleAddClose}>Add Sticky Notes</MenuItem>
+          <MenuItem onClick={handleAddClose}>Blah</MenuItem>
+        </Menu>
 
       </Toolbar>
     </AppBar>

@@ -1,47 +1,47 @@
-import React, { useState, Component, state } from "react";
+import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { AppBar, Toolbar, Box } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
-import SettingsIcon from "@material-ui/icons/Settings";
 import uuid from 'react-uuid';
 
-class AddCard extends Component {
+class AddCategory extends Component {
 
 
     state = {
         id: uuid(),
-        label: '',
-        url: '',
-        // icon: '',
+        category: '',
         colour: '',
+        showError: false,
     }
 
     inputColourHandler = (event) => {
-        console.log(event.target.value);
         this.setState({ colour: event.target.value });
-
     }
 
-    inputURLHandler = (event) => {
-        this.setState({ url: event.target.value });
+    inputCategoryHandler = (event) => {
+        this.setState({ category: event.target.value });
     };
 
-    inputLabelHandler = (event) => {
-        console.log(uuid());
-        this.setState({ label: event.target.value });
-    };
+    handleSubmit = () => {
+        if (this.state.category.trim() === "") {
+            this.setState({ showError: true });
+        } else {
+            const category = {
+                id: this.state.id,
+                category: this.state.category,
+                colour: this.state.colour,
+                bookmarks: []
+            };
+            this.props.onAddNewCategory(category, { type: 'addCategory', active: false });
+        }
+    }
 
     render() {
-        return (<Dialog open={() => this.props.onChangeDialogStatus({ type: 'Add', active: true })} onClose={() => this.props.onChangeDialogStatus({ type: 'Add', active: false })}>
+        return (<Dialog open={() => this.props.onChangeDialogStatus({ type: 'addCategory', active: true })} onClose={() => this.props.onChangeDialogStatus({ type: 'Add', active: false })}>
             <DialogTitle id="alert-dialog-title">Add Shortcut Card</DialogTitle>
             <DialogContent>
                 <TextField
@@ -49,22 +49,12 @@ class AddCard extends Component {
                     fullWidth
                     size="small"
                     id="inputLabelField"
-                    label="Label"
+                    label="Category"
                     variant="outlined"
-                    onChange={this.inputLabelHandler}
+                    onChange={this.inputCategoryHandler}
+                    helperText={this.state.showError ? 'Empty Field: Please enter Category' : ''}
                 />
-          &nbsp;
-          <TextField
-                    required
-                    size="small"
-                    fullWidth
-                    id="inputURLField"
-                    label="Url"
-                    variant="outlined"
-                    onChange={this.inputURLHandler}
-                    defaultValue="https://"
 
-                />
             &nbsp;
                 <center>
                     <div>
@@ -108,9 +98,8 @@ class AddCard extends Component {
                     </div>
                 </center>
             </DialogContent>
-
             <DialogActions>
-                <Button onClick={() => this.props.onAddNewCard(this.state, { type: 'Add', active: false })} color="primary" autoFocus>
+                <Button onClick={this.handleSubmit} color="primary" autoFocus>
                     Add
           </Button>
             </DialogActions>
@@ -118,4 +107,4 @@ class AddCard extends Component {
     }
 }
 
-export default AddCard;
+export default AddCategory;
