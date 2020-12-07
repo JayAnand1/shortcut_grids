@@ -5,13 +5,15 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  TextField,
   Radio,
   Grid,
   Typography,
 } from "@material-ui/core";
+
 import uuid from "react-uuid";
 
-class SettingsDialog extends Component {
+class AddCategoryDialog extends Component {
   state = {
     id: uuid(),
     category: "",
@@ -38,7 +40,7 @@ class SettingsDialog extends Component {
         bookmarks: [],
       };
       this.props.onAddNewCategory(category, {
-        type: "Settings",
+        type: "addCategory",
         active: false,
       });
     }
@@ -49,13 +51,37 @@ class SettingsDialog extends Component {
       <Dialog
         fullWidth
         open={() =>
-          this.props.onChangeDialogStatus({ type: "settings", active: true })
+          this.props.onChangeDialogStatus({ type: "addCategory", active: true })
         }
         onClose={() =>
           this.props.onChangeDialogStatus({ type: "Add", active: false })
         }
       >
-        <DialogTitle id="alert-dialog-title">Settings</DialogTitle>
+        <DialogTitle>Add Bookmark Group</DialogTitle>
+        <DialogContent>
+          <TextField
+            required
+            fullWidth
+            size="small"
+            id="inputLabelField"
+            label="Group Name"
+            variant="outlined"
+            onChange={this.inputCategoryHandler}
+            helperText={
+              this.state.showError ? "Empty Field: Please enter Category" : ""
+            }
+          />
+        </DialogContent>
+        <DialogContent>
+          <TextField
+            fullWidth
+            size="small"
+            id="inputLabelField"
+            label="Description (Optional)"
+            variant="outlined"
+            //onChange={this.inputCategoryHandler}
+          />
+        </DialogContent>
         <DialogContent>
           <Grid
             container
@@ -63,7 +89,7 @@ class SettingsDialog extends Component {
             justify="space-evenly"
             alignItems="center"
           >
-            <Typography variant="body1">Background Colour</Typography>
+            <Typography variant="body1">Card Colour</Typography>
             <Radio
               style={{ color: "#61BD4F" }}
               checked={this.state.colour === "#61BD4F"}
@@ -105,21 +131,9 @@ class SettingsDialog extends Component {
             />
           </Grid>
         </DialogContent>
-        <DialogContent>
-          <center>
-            <Typography variant="body2">
-              Copyright © 2020, All Rights Reserved
-            </Typography>
-          </center>
-        </DialogContent>
         <DialogActions>
-          <Button
-            onClick={this.handleSubmit}
-            color="primary"
-            autoFocus
-            size="small"
-          >
-            Save
+          <Button onClick={this.handleSubmit} color="primary" size="small">
+            Add
           </Button>
           <Button
             onClick={() =>
@@ -136,4 +150,4 @@ class SettingsDialog extends Component {
   }
 }
 
-export default SettingsDialog;
+export default AddCategoryDialog;

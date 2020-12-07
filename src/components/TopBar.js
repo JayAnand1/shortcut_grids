@@ -1,51 +1,44 @@
 import React from "react";
-import { AppBar, Toolbar, Box } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import SettingsIcon from "@material-ui/icons/Settings";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
+import { AppBar, Toolbar, Box, IconButton, Tooltip } from "@material-ui/core";
+import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
 const TopBar = (props) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleAddClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleAddClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleAddClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleAddClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
         <Box flexGrow={1}></Box>
-        <IconButton onClick={handleAddClick}>
-          <AddOutlinedIcon />
-        </IconButton>
-        <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Info', active: true })}>
-          <InfoOutlinedIcon />
-        </IconButton>
-        <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Settings', active: true })}>
-          <SettingsIcon />
-        </IconButton>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleAddClose}
-        >
-          <MenuItem onClick={() => props.onChangeDialogStatus({ type: 'addCategory', active: true })}>Add Category</MenuItem>
-          <MenuItem onClick={handleAddClose}>Add Sticky Notes</MenuItem>
-          <MenuItem onClick={handleAddClose}>Blah</MenuItem>
-        </Menu>
-
+        <Tooltip title="Add Bookmark Group">
+          <IconButton
+            onClick={() =>
+              props.onChangeDialogStatus({ type: "addCategory", active: true })
+            }
+          >
+            <AddCircleOutlineOutlinedIcon style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Settings">
+          <IconButton
+            onClick={() =>
+              props.onChangeDialogStatus({ type: "settings", active: true })
+            }
+          >
+            <TuneRoundedIcon style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default TopBar;
 
@@ -65,7 +58,6 @@ export default TopBar;
 //   const [addDialogActive, setAddDialogActive] = useState(false);
 //   const [infoDialogActive, setInfoDialogActive] = useState(false);
 //   const [settingsDialogActive, setSettingsDialogActive] = useState(false);
-
 
 //   const handleClickOpenInfo = () => {
 //     setOpenInfo(true);
@@ -161,7 +153,6 @@ export default TopBar;
 //             </Button>
 //           </DialogActions>
 //         </Dialog>
-
 
 //         <Dialog open={openAdd} onClose={handleCloseAdd}>
 //           <DialogTitle id="alert-dialog-title">Add Shortcut Card</DialogTitle>
