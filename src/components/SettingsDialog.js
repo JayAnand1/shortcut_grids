@@ -7,41 +7,40 @@ import {
   DialogTitle,
   Radio,
   Grid,
+  Card,
   Typography,
+  ButtonGroup,
+  Box,
+  NativeSelect,
+  Select,
+  TableContainer,
+  TableCell,
+  TableRow,
+  FormControl,
+  InputLabel,
+  Input,
 } from "@material-ui/core";
 import uuid from "react-uuid";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
 
 class SettingsDialog extends Component {
   state = {
     id: uuid(),
     category: "",
-    colour: "",
+    masterBackgroundColour: "",
     showError: false,
   };
 
-  inputColourHandler = (event) => {
-    this.setState({ colour: event.target.value });
+  inputBackgroundColourHandler = (event) => {
+    this.setState({ masterBackgroundColour: event.target.value });
+
+    console.log(event.target.value);
+    // this.props.masterBackgroundColor(event.target.value);
   };
 
-  inputCategoryHandler = (event) => {
-    this.setState({ category: event.target.value });
-  };
-
-  handleSubmit = () => {
-    if (this.state.category.trim() === "") {
-      this.setState({ showError: true });
-    } else {
-      const category = {
-        id: this.state.id,
-        category: this.state.category,
-        colour: this.state.colour,
-        bookmarks: [],
-      };
-      this.props.onAddNewCategory(category, {
-        type: "Settings",
-        active: false,
-      });
-    }
+  handleSave = () => {
+    //props.masterBackgroundColour(this.state.masterBackgroundColour);
   };
 
   render() {
@@ -65,40 +64,52 @@ class SettingsDialog extends Component {
           >
             <Typography variant="body1">Background Colour</Typography>
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#61BD4F" }}
-              checked={this.state.colour === "#61BD4F"}
-              onChange={this.inputColourHandler}
-              value="#61BD4F"
+              checked={this.state.masterBackgroundColour === "backgroundColor1"}
+              onChange={this.inputBackgroundColourHandler}
+              value="backgroundColor1"
             />
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#F2D600" }}
-              checked={this.state.colour === "#F2D600"}
-              onChange={this.inputColourHandler}
-              value="#F2D600"
+              checked={this.state.masterBackgroundColour === "backgroundColor2"}
+              onChange={this.inputBackgroundColourHandler}
+              value="backgroundColor2"
             />
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#FF9F1A" }}
               checked={this.state.colour === "#FF9F1A"}
-              onChange={this.inputColourHandler}
+              onChange={this.masterBackgroundColour}
               value="#FF9F1A"
             />
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#EB5A46" }}
               checked={this.state.colour === "#EB5A46"}
-              onChange={this.inputColourHandler}
+              onChange={this.masterBackgroundColour}
               value="#EB5A46"
               color="default"
             />
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#C377E0" }}
               checked={this.state.colour === "#C377E0"}
-              onChange={this.inputColourHandler}
+              onChange={this.masterBackgroundColour}
               value="#C377E0"
               color="default"
             />
             <Radio
+              icon={<CheckBoxOutlineBlankIcon />}
+              checkedIcon={<CheckBoxIcon />}
               style={{ color: "#0079BF" }}
-              checked={this.state.colour === "#0079BF"}
+              checked={this.state.masterBackgroundColour === "#0079BF"}
               onChange={this.inputColourHandler}
               value="#0079BF"
               color="default"
@@ -114,7 +125,7 @@ class SettingsDialog extends Component {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={this.handleSubmit}
+            onClick={this.handleSave}
             color="primary"
             autoFocus
             size="small"

@@ -12,12 +12,13 @@ import CategoryCardItem from "./components/CategoryCardItem";
 
 class App extends Component {
   state = {
-    categories: [], // {label, url, color, icon} {categoryLabel : "", bookmarks : [{ label, }], id: }
+    categories: [], // {label, url, color, icon} {categoryLabel : "", categoryDescription : "",  bookmarks : [{ label, }], id: }
     dialogStatus: { type: "", active: false }, // {type, active}
     showSnackBar: false,
     snackBarMessage: "",
     snackBarSeverity: "",
     selectedCategoryId: null,
+    masterBackgroundColour: "backgroundColor5",
   };
 
   updateList = (newList) => {
@@ -87,69 +88,73 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.masterBackgroundColour);
     return (
-      <Container maxWidth="lg">
-        <TopBar
-          dialogComplete={this.state.dialogStatus.active}
-          onChangeDialogStatus={this.handleDialogStatus}
-        />
-        {this.state.dialogStatus.type === "addCategory" &&
-          this.state.dialogStatus.active && (
-            <AddCategoryDialog
-              onAddNewCategory={this.handleNewCategory}
-              onChangeDialogStatus={this.handleDialogStatus}
-            />
-          )}
-        {this.state.dialogStatus.type === "addBookmark" &&
-          this.state.dialogStatus.active && (
-            <AddBookmarkDialog
-              onAddNewBookmark={this.handleNewBookmark}
-              onChangeDialogStatus={this.handleDialogStatus}
-              categoryId={this.state.selectedCategoryId}
-            />
-          )}
-        {this.state.dialogStatus.type === "settings" &&
-          this.state.dialogStatus.active && (
-            <SettingsDialog
-              onAddNewBookmark={this.handleSettings}
-              onChangeDialogStatus={this.handleDialogStatus}
-            />
-          )}
-        {this.state.dialogStatus.type === "editCardItem" &&
-          this.state.dialogStatus.active && (
-            <EditCardItemDialog
-              onAddNewBookmark={this.handleNewBookmark}
-              onChangeDialogStatus={this.handleDialogStatus}
-            />
-          )}
-        <Grid container spacing={1} direction="row" alignItems="stretch">
-          {this.state.categories.map((item) => (
-            <CategoryCard
-              item={item}
-              key={item.id}
-              onDelete={this.handleDelete}
-              onAddNewBookmarkDialog={this.handleNewBookmarkDialog}
-              onChangeDialogStatus={this.handleDialogStatus}
-            />
-          ))}
-        </Grid>
-        <Snackbar
-          open={this.state.showSnackBar}
-          autoHideDuration={3000}
-          onClose={() =>
-            this.setState({ showSnackBar: !this.state.showSnackBar })
-          }
-        >
-          <MuiAlert
-            onClose={() => !this.state.showSnackBar}
-            elevation={6}
-            variant="filled"
-            severity={this.state.snackBarSeverity}
+      <div className="backgroundColor4">
+        <Container maxWidth="lg">
+          <TopBar
+            dialogComplete={this.state.dialogStatus.active}
+            onChangeDialogStatus={this.handleDialogStatus}
+          />
+          {this.state.dialogStatus.type === "addCategory" &&
+            this.state.dialogStatus.active && (
+              <AddCategoryDialog
+                onAddNewCategory={this.handleNewCategory}
+                onChangeDialogStatus={this.handleDialogStatus}
+              />
+            )}
+          {this.state.dialogStatus.type === "addBookmark" &&
+            this.state.dialogStatus.active && (
+              <AddBookmarkDialog
+                onAddNewBookmark={this.handleNewBookmark}
+                onChangeDialogStatus={this.handleDialogStatus}
+                categoryId={this.state.selectedCategoryId}
+              />
+            )}
+          {this.state.dialogStatus.type === "settings" &&
+            this.state.dialogStatus.active && (
+              <SettingsDialog
+                onAddNewBookmark={this.handleSettings}
+                onChangeDialogStatus={this.handleDialogStatus}
+                masterBackgroundColour={this.state.masterBackgroundColour}
+              />
+            )}
+          {this.state.dialogStatus.type === "editCardItem" &&
+            this.state.dialogStatus.active && (
+              <EditCardItemDialog
+                onAddNewBookmark={this.handleNewBookmark}
+                onChangeDialogStatus={this.handleDialogStatus}
+              />
+            )}
+          <Grid container spacing={1} direction="row" alignItems="stretch">
+            {this.state.categories.map((item) => (
+              <CategoryCard
+                item={item}
+                key={item.id}
+                onDelete={this.handleDelete}
+                onAddNewBookmarkDialog={this.handleNewBookmarkDialog}
+                onChangeDialogStatus={this.handleDialogStatus}
+              />
+            ))}
+          </Grid>
+          <Snackbar
+            open={this.state.showSnackBar}
+            autoHideDuration={3000}
+            onClose={() =>
+              this.setState({ showSnackBar: !this.state.showSnackBar })
+            }
           >
-            {this.state.snackBarMessage}
-          </MuiAlert>
-        </Snackbar>
-      </Container>
+            <MuiAlert
+              onClose={() => !this.state.showSnackBar}
+              elevation={6}
+              variant="filled"
+              severity={this.state.snackBarSeverity}
+            >
+              {this.state.snackBarMessage}
+            </MuiAlert>
+          </Snackbar>
+        </Container>
+      </div>
     );
   }
 }

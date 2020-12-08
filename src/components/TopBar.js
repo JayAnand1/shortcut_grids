@@ -2,6 +2,7 @@ import React from "react";
 import { AppBar, Toolbar, Box, IconButton, Tooltip } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
+import SearchIcon from "@material-ui/icons/Search";
 const TopBar = (props) => {
   // const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -17,6 +18,11 @@ const TopBar = (props) => {
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
         <Box flexGrow={1}></Box>
+        <Tooltip title="Search Bookmarks">
+          <IconButton>
+            <SearchIcon style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
         <Tooltip title="Add Bookmark Group">
           <IconButton
             onClick={() =>

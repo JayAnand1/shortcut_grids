@@ -56,6 +56,7 @@ class AddBookmarkDialog extends Component {
         <DialogTitle id="alert-dialog-title">Add new bookmark</DialogTitle>
         <DialogContent>
           <TextField
+            autoFocus
             required
             fullWidth
             size="small"
@@ -69,6 +70,7 @@ class AddBookmarkDialog extends Component {
           />
           &nbsp;
           <TextField
+            autoFocus
             required
             size="small"
             fullWidth

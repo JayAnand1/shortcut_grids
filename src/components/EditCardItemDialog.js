@@ -89,7 +89,12 @@ class EditCardItemDialog extends Component {
           <Button onClick={this.handleSubmit} color="primary">
             Save
           </Button>
-          <Button onClick={this.handleSubmit} color="primary">
+          <Button
+            onClick={() =>
+              this.props.onChangeDialogStatus({ type: "Add", active: false })
+            }
+            color="primary"
+          >
             Close
           </Button>
           <Button color="secondary">Delete Bookmark</Button>
