@@ -7,6 +7,7 @@ import {
   DialogTitle,
   Radio,
   Grid,
+  TextField,
   Card,
   Typography,
   ButtonGroup,
@@ -34,13 +35,13 @@ class SettingsDialog extends Component {
 
   inputBackgroundColourHandler = (event) => {
     this.setState({ masterBackgroundColour: event.target.value });
-
-    console.log(event.target.value);
-    // this.props.masterBackgroundColor(event.target.value);
   };
 
   handleSave = () => {
-    //props.masterBackgroundColour(this.state.masterBackgroundColour);
+    this.props.onChange;
+    this.setState({
+      masterBackgroundColour: this.state.masterBackgroundColour,
+    });
   };
 
   render() {
@@ -59,67 +60,100 @@ class SettingsDialog extends Component {
           <Grid
             container
             direction="row"
-            justify="space-evenly"
+            justify="space-between"
             alignItems="center"
           >
-            <Typography variant="body1">Background Colour</Typography>
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#61BD4F" }}
-              checked={this.state.masterBackgroundColour === "backgroundColor1"}
-              onChange={this.inputBackgroundColourHandler}
-              value="backgroundColor1"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#F2D600" }}
-              checked={this.state.masterBackgroundColour === "backgroundColor2"}
-              onChange={this.inputBackgroundColourHandler}
-              value="backgroundColor2"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#FF9F1A" }}
-              checked={this.state.colour === "#FF9F1A"}
-              onChange={this.masterBackgroundColour}
-              value="#FF9F1A"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#EB5A46" }}
-              checked={this.state.colour === "#EB5A46"}
-              onChange={this.masterBackgroundColour}
-              value="#EB5A46"
-              color="default"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#C377E0" }}
-              checked={this.state.colour === "#C377E0"}
-              onChange={this.masterBackgroundColour}
-              value="#C377E0"
-              color="default"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#0079BF" }}
-              checked={this.state.masterBackgroundColour === "#0079BF"}
-              onChange={this.inputColourHandler}
-              value="#0079BF"
-              color="default"
-            />
+            <Grid item>
+              <Typography>User Name</Typography>
+            </Grid>
+            <Grid item>
+              <Typography></Typography>
+            </Grid>
+            <TextField size="small"></TextField>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Grid item>
+              <Typography>Weather/Time Zone Location</Typography>
+            </Grid>
+            <Grid item>
+              <Typography></Typography>
+            </Grid>
+            <TextField size="small"></TextField>
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Grid item>
+              <Typography variant="body1">Background Colour</Typography>
+            </Grid>
+            <Grid item>
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#61BD4F", margin: "0px", padding: "0px" }}
+                // checked={
+                //   this.state.masterBackgroundColour === "#backgroundColour4"
+                // }
+                // onChange={this.props.onChangeBackgroundColour("backgroundColour1")}
+                // value="backgroundColor1"
+              />
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#F2D600", marginLeft: "10px", padding: "0px" }}
+                //checked={this.props.onChangeBackgroundColour("backgroundColour2")}
+                onChange={this.props.onChangeBackgroundColour(
+                  "backgroundColour2"
+                )}
+                value="backgroundColor2"
+              />
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#FF9F1A", marginLeft: "10px", padding: "0px" }}
+                //checked={this.state.masterBackgroundColour === "backgroundColour3"}
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColor3"
+              />
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#EB5A46", marginLeft: "10px", padding: "0px" }}
+                //checked={this.state.masterBackgroundColour === "backgroundColour4"}
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColor4"
+              />
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#C377E0", marginLeft: "10px", padding: "0px" }}
+                //={this.state.masterBackgroundColour === "backgroundColour5"}
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColor5"
+              />
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#0079BF", marginLeft: "10px", padding: "0px" }}
+                //checked={this.state.masterBackgroundColour === "backgroundColour6"}
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColor6"
+              />
+            </Grid>
           </Grid>
         </DialogContent>
         <DialogContent>
           <center>
             <Typography variant="body2">
-              Copyright © 2020, All Rights Reserved
+              Copyright © 2020. All Rights Reserved
             </Typography>
           </center>
         </DialogContent>

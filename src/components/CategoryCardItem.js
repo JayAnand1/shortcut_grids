@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardActions,
   ListItemAvatar,
+  Paper,
 } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
@@ -59,11 +60,11 @@ class CategoryCardItem extends Component {
             boxShadow:
               "0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08)",
           }}
-          //onTouchTap={window.open(this.props.item.url, "_self")}
+          onClick={() => window.open(this.props.item.url, "_self")}
         >
           <ListItemIcon style={{ margin: "0px 0px 0px 5px" }}>
             <Avatar
-              //   src="https://www.facebook.com/favicon.ico"
+              //src="https://www.facebook.com/favicon.ico"
               sizes="small"
               style={{ width: "20px", height: "20px" }}
             >
@@ -72,6 +73,7 @@ class CategoryCardItem extends Component {
               </Typography>
             </Avatar>
           </ListItemIcon>
+
           <ListItemText
             style={{
               padding: "0px 0px 0px 0px",

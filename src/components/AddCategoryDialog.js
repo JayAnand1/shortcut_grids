@@ -70,10 +70,11 @@ class AddCategoryDialog extends Component {
             required
             fullWidth
             size="small"
-            id="inputLabelField"
+            id="inputBookmarkLabelField"
             label="Group Name"
             variant="outlined"
             onChange={this.inputCategoryHandler}
+            //value={this.inputCategoryHandler}
             helperText={
               this.state.showError ? "Empty Field: Please enter Category" : ""
             }

@@ -15,7 +15,7 @@
   height: 150px;
 }
 
-.backgroundColor1 {
+.backgroundColour1 {
   background: #8e2de2; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -30,7 +30,7 @@
   left: 0;
 }
 
-.backgroundColor2 {
+.backgroundColour2 {
   background: #0f0c29; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -51,7 +51,7 @@
   left: 0;
 }
 
-.backgroundColor3 {
+.backgroundColour3 {
   background: #00b09b; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -70,7 +70,7 @@
   left: 0;
 }
 
-.backgroundColor4 {
+.backgroundColour4 {
   background: #8e0e00; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -89,7 +89,7 @@
   left: 0;
 }
 
-.backgroundColor5 {
+.backgroundColour5 {
   background: #ec6f66; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -107,7 +107,7 @@
   W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.backgroundColor6 {
+.backgroundColour6 {
   background: #f12711; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,

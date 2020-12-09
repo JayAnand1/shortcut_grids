@@ -29,7 +29,7 @@ import CategoryCardItem from "./CategoryCardItem";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-class CategoryCard extends Component {
+class EditCategoryCard extends Component {
   state = {
     openMoreVertMenu: false,
     menuAnchor: "",
@@ -57,7 +57,7 @@ class CategoryCard extends Component {
 
   render() {
     return (
-      <Grid item xs={6} sm={4} md={3}>
+      <Grid item xs={12} sm={4} md={3}>
         <div
           style={{
             backgroundColor: this.props.item.colour,
@@ -132,11 +132,6 @@ class CategoryCard extends Component {
                   open={this.state.openMoreVertMenu}
                   onClose={this.handleClose}
                   anchorEl={this.state.menuAnchor}
-                  getContentAnchorEl={null}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                  }}
                 >
                   <MenuItem onClick={this.handleClose}>
                     <Grid container>
@@ -199,4 +194,4 @@ class CategoryCard extends Component {
   }
 }
 
-export default CategoryCard;
+export default EditCategoryCard;

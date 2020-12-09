@@ -9,6 +9,7 @@ import AddBookmarkDialog from "./components/AddBookmarkDialog";
 import SettingsDialog from "./components/SettingsDialog";
 import EditCardItemDialog from "./components/EditCardItemDialog";
 import CategoryCardItem from "./components/CategoryCardItem";
+import { ColorizeRounded } from "@material-ui/icons";
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
     snackBarMessage: "",
     snackBarSeverity: "",
     selectedCategoryId: null,
-    masterBackgroundColour: "backgroundColor5",
+    masterBackgroundColour: "backgroundColour4",
   };
 
   updateList = (newList) => {
@@ -71,6 +72,11 @@ class App extends Component {
   handleSettings = (categoryId, dialog) => {
     this.handleSelectedCategoryId(categoryId);
     this.handleDialogStatus(dialog);
+    this.handleBackgroundColor();
+  };
+
+  handleBackgroundColour = (colour) => {
+    this.setState({ masterBackgroundColour: colour });
   };
 
   handleDialogStatus = (dialog) => {
@@ -90,7 +96,7 @@ class App extends Component {
   render() {
     console.log(this.state.masterBackgroundColour);
     return (
-      <div className="backgroundColor4">
+      <div className={this.state.masterBackgroundColour}>
         <Container maxWidth="lg">
           <TopBar
             dialogComplete={this.state.dialogStatus.active}
@@ -116,7 +122,7 @@ class App extends Component {
               <SettingsDialog
                 onAddNewBookmark={this.handleSettings}
                 onChangeDialogStatus={this.handleDialogStatus}
-                masterBackgroundColour={this.state.masterBackgroundColour}
+                onChangeBackgroundColour={this.handleBackgroundColour}
               />
             )}
           {this.state.dialogStatus.type === "editCardItem" &&
