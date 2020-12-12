@@ -1,34 +1,14 @@
 import React, { Component } from "react";
 import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid,
   ListItemText,
   ListItemSecondaryAction,
   ListItemIcon,
   IconButton,
   Typography,
   ListItem,
-  CardHeader,
-  CardActions,
-  ListItemAvatar,
-  Paper,
 } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
-import EditCardItemDialog from "./EditCardItemDialog";
-import MailIcon from "@material-ui/icons/Mail";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Label from "@material-ui/icons/Label";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
-import InfoIcon from "@material-ui/icons/Info";
-import ForumIcon from "@material-ui/icons/Forum";
-import LocalOfferIcon from "@material-ui/icons/LocalOffer";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-import TreeView from "@material-ui/lab/TreeView";
-import TreeItem from "@material-ui/lab/TreeItem";
 
 class CategoryCardItem extends Component {
   state = {
@@ -37,19 +17,15 @@ class CategoryCardItem extends Component {
 
   mouseEnter = () => {
     this.setState({ isMouseInside: true });
-    console.log(this.state.isMouseInside);
   };
   mouseLeave = () => {
     this.setState({ isMouseInside: false });
-    console.log(this.state.isMouseInside);
   };
 
   render() {
     return (
       <div onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         <ListItem
-          alignItems="center"
-          selected
           button
           disableGutters
           dense
@@ -60,22 +36,22 @@ class CategoryCardItem extends Component {
             borderRadius: "0px",
             border: "1px solid rgba(255, 255, 255, .4)",
             backgroundColor: "transparent",
-            // boxShadow:
-            //   "0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08)",
           }}
           onClick={() => window.open(this.props.item.url, "_self")}
         >
-          <ListItemIcon style={{ margin: "0px 0px 0px 5px" }}>
-            <Avatar
-              //src="https://www.facebook.com/favicon.ico"
-              sizes="small"
-              style={{ width: "20px", height: "20px" }}
-            >
-              <Typography variant="caption">
-                {this.props.item.label[0].toUpperCase()}
-              </Typography>
-            </Avatar>
-          </ListItemIcon>
+          <div>
+            <ListItemIcon style={{ margin: "0px 0px 0px 5px" }}>
+              <Avatar
+                src={this.props.item.url + "/favicon.ico"}
+                sizes="small"
+                style={{ width: "20px", height: "20px" }}
+              >
+                <Typography variant="caption">
+                  {this.props.item.label[0].toUpperCase()}
+                </Typography>
+              </Avatar>
+            </ListItemIcon>
+          </div>
 
           <ListItemText
             style={{

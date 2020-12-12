@@ -56,6 +56,7 @@ class AddBookmarkDialog extends Component {
         <DialogTitle id="alert-dialog-title">Add new bookmark</DialogTitle>
         <DialogContent>
           <TextField
+            inputProps={{ maxLength: 20 }}
             autoFocus
             required
             fullWidth

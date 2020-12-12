@@ -5,22 +5,16 @@ import {
   Box,
   IconButton,
   Tooltip,
-  Typography,
   Menu,
   MenuItem,
-  Badge,
-  TextField,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
-import SearchIcon from "@material-ui/icons/Search";
-import GreetingMessage from "./GreetingMessage";
-import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
 import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
 import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
 import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 const TopBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -32,24 +26,25 @@ const TopBar = (props) => {
     setAnchorEl(null);
   };
 
+  const handleMenuItem = () => {
+    handleAddClose();
+    props.onChangeDialogStatus({ type: "addCategory", active: true });
+  };
+
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
-        <Typography variant="h5" style={{ color: "white" }}>
-          <Box fontFamily="Monospace">{<GreetingMessage />}</Box>
-        </Typography>
         <Box flexGrow={1} />
 
         <Tooltip title="Add Elements">
           <IconButton onClick={handleAddClick}>
-            <AddCircleOutlineOutlinedIcon style={{ color: "white" }} />
+            <AddCircleOutlineOutlinedIcon style={{ color: "black" }} />
           </IconButton>
         </Tooltip>
 
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
-          keepMounted
           open={Boolean(anchorEl)}
           onClose={handleAddClose}
           getContentAnchorEl={null}
@@ -58,12 +53,7 @@ const TopBar = (props) => {
             horizontal: "left",
           }}
         >
-          <MenuItem
-            dense
-            onClick={() =>
-              props.onChangeDialogStatus({ type: "addCategory", active: true })
-            }
-          >
+          <MenuItem dense onClick={handleMenuItem}>
             <BookmarksOutlinedIcon
               style={{ fontsize: "20", paddingRight: "10px" }}
             />
@@ -95,7 +85,7 @@ const TopBar = (props) => {
               props.onChangeDialogStatus({ type: "settings", active: true })
             }
           >
-            <TuneRoundedIcon style={{ color: "white" }} />
+            <TuneRoundedIcon style={{ color: "black" }} />
           </IconButton>
         </Tooltip>
       </Toolbar>

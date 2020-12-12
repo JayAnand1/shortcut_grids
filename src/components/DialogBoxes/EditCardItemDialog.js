@@ -5,7 +5,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
-import uuid from "react-uuid";
 
 class EditCardItemDialog extends Component {
   state = {
@@ -98,7 +97,17 @@ class EditCardItemDialog extends Component {
           >
             Close
           </Button>
-          <Button color="secondary" onClick={() => this.props.onDeleteBookmark(this.state.id, { type: "", active: false })}>Delete Bookmark</Button>
+          <Button
+            color="secondary"
+            onClick={() =>
+              this.props.onDeleteBookmark(this.state.id, {
+                type: "",
+                active: false,
+              })
+            }
+          >
+            Delete Bookmark
+          </Button>
         </DialogActions>
       </Dialog>
     );

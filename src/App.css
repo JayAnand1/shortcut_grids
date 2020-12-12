@@ -16,17 +16,7 @@
 }
 
 .backgroundColour1 {
-  background: #ff416c; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #ff4b2b,
-    #ff416c
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #ff4b2b,
-    #ff416c
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #dfc2c4; /* fallback for old browsers */
 
   min-height: 100%;
   min-width: 100%;
@@ -53,6 +43,8 @@
   position: absolute;
   top: 0;
   left: 0;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 .backgroundColour3 {
@@ -67,7 +59,6 @@
     #0072ff,
     #00c6ff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -87,7 +78,6 @@
     #3f4c6b,
     #606c88
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
   min-height: 100%;
   min-width: 100%;
   position: absolute;

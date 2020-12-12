@@ -7,19 +7,7 @@ import {
   DialogTitle,
   Radio,
   Grid,
-  TextField,
-  Card,
   Typography,
-  ButtonGroup,
-  Box,
-  NativeSelect,
-  Select,
-  TableContainer,
-  TableCell,
-  TableRow,
-  FormControl,
-  InputLabel,
-  Input,
   Tooltip,
 } from "@material-ui/core";
 import uuid from "react-uuid";
@@ -37,13 +25,6 @@ class SettingsDialog extends Component {
   inputBackgroundColourHandler = (event) => {
     this.setState({ masterBackgroundColour: event.target.value });
     this.props.onChangeBackgroundColour(event.target.value);
-  };
-
-  handleSave = () => {
-    // this.props.onChange;
-    // this.setState({
-    //   masterBackgroundColour: this.state.masterBackgroundColour,
-    // });
   };
 
   render() {
@@ -172,14 +153,6 @@ class SettingsDialog extends Component {
           </center>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={this.handleSave}
-            color="primary"
-            autoFocus
-            size="small"
-          >
-            Save
-          </Button>
           <Button
             onClick={() =>
               this.props.onChangeDialogStatus({ type: "Add", active: false })

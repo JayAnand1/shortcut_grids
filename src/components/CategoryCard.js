@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import {
   Card,
-  CardActions,
-  CardHeader,
   Grid,
   IconButton,
   ListItemIcon,
   Button,
-  Paper,
   Typography,
   Box,
   List,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  Divider,
   MenuItem,
   Menu,
   Dialog,
@@ -22,14 +18,11 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
 } from "@material-ui/core";
 import { MoreVert, Add } from "@material-ui/icons";
 import CategoryCardItem from "./CategoryCardItem";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
 
 class CategoryCard extends Component {
   state = {
@@ -47,7 +40,6 @@ class CategoryCard extends Component {
   };
 
   handleClick = (event) => {
-    console.log(event.currentTarget);
     this.setState({ openMoreVertMenu: true });
     this.setState({ menuAnchor: event.currentTarget });
   };
@@ -55,6 +47,15 @@ class CategoryCard extends Component {
   handleClose = () => {
     this.setState({ openMoreVertMenu: false });
     this.setState({ menuAnchor: null });
+  };
+
+  handleEditCategory = () => {
+    this.handleClose();
+    this.props.onChangeDialogStatus({
+      type: "editCardCategory",
+      active: true,
+      selectedId: this.props.item.id,
+    });
   };
 
   render() {
@@ -72,10 +73,25 @@ class CategoryCard extends Component {
           }}
         >
           <Typography
-            variant="body2"
-            style={{ color: "white", padding: "5px" }}
+            noWrap
+            //props={{ maxLength: 20 }}
+            display="block"
+            variant="body1"
+            style={{
+              color: "black",
+              marginLeft: "10px",
+              marginTop: "5px",
+              paddingBottom: "0px",
+            }}
           >
             {this.props.item.category}
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="caption"
+            style={{ color: "black", marginLeft: "20px" }}
+          >
+            {this.props.item.categoryDescription}
           </Typography>
           <List
             style={{
@@ -83,11 +99,6 @@ class CategoryCard extends Component {
               margin: "0px 2px 0px 2px",
             }}
           >
-            <Typography variant="subtitle2" style={{ color: "white" }}>
-              <Box lineHeight="normal" m={1}>
-                {this.props.item.categoryDescription}
-              </Box>
-            </Typography>
             {this.props.item.bookmarks.map((bookmark) => (
               <CategoryCardItem
                 item={bookmark}
@@ -144,7 +155,7 @@ class CategoryCard extends Component {
                     horizontal: "left",
                   }}
                 >
-                  <MenuItem onClick={this.handleClose}>
+                  <MenuItem onClick={this.handleEditCategory}>
                     <Grid container>
                       <EditIcon
                         style={{ marginRight: "15px", fontSize: "20" }}

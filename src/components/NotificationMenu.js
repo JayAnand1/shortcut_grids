@@ -1,25 +1,11 @@
 import React from "react";
+import { Menu, MenuItem } from "@material-ui/core";
 import {
-  AppBar,
-  Toolbar,
-  Box,
-  IconButton,
-  Tooltip,
-  Typography,
-  Menu,
-  MenuItem,
-  Badge,
-} from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
-import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
-import SearchIcon from "@material-ui/icons/Search";
-import GreetingMessage from "./GreetingMessage";
-import BookmarksIcon from "@material-ui/icons/Bookmarks";
-import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
-import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
-import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
-import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+  BookmarksOutlinedIcon,
+  NoteAddOutlinedIcon,
+  ListAltOutlinedIcon,
+  AccountTreeOutlinedIcon,
+} from "@material-ui/icons";
 
 class NotificationMenu extends Component {
   state = {};

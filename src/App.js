@@ -1,15 +1,14 @@
 import "./App.css";
-import React, { Component, state } from "react";
+import React, { Component } from "react";
 import { Container, Snackbar, Grid } from "@material-ui/core";
 import TopBar from "./components/TopBar";
 import MuiAlert from "@material-ui/lab/Alert";
-import AddCategoryDialog from "./components/AddCategoryDialog";
+import AddCategoryDialog from "./components/DialogBoxes/AddCategoryDialog";
 import CategoryCard from "./components/CategoryCard";
-import AddBookmarkDialog from "./components/AddBookmarkDialog";
-import SettingsDialog from "./components/SettingsDialog";
-import EditCardItemDialog from "./components/EditCardItemDialog";
-import CategoryCardItem from "./components/CategoryCardItem";
-import { ColorizeRounded } from "@material-ui/icons";
+import AddBookmarkDialog from "./components/DialogBoxes/AddBookmarkDialog";
+import SettingsDialog from "./components/DialogBoxes/SettingsDialog";
+import EditCardItemDialog from "./components/DialogBoxes/EditCardItemDialog";
+import EditCardCategoryDialog from "./components/DialogBoxes/EditCategoryCardDialog";
 
 class App extends Component {
   state = {
@@ -22,6 +21,7 @@ class App extends Component {
     masterBackgroundColour: null,
     settings: {},
     selectedBookmark: null,
+    selectedCategory: null,
   };
 
   updateList = (newList) => {
@@ -40,7 +40,6 @@ class App extends Component {
       }
     }
     this.setState({ categories: newCategories });
-    console.log(newCategories);
     this.updateList(newCategories);
     this.handleSnackBar(`Add Bookmark to ${category.category}`, "info");
     this.handleDialogStatus(dialog);
@@ -85,7 +84,6 @@ class App extends Component {
   };
 
   handleEditBookmark = (id) => {
-    console.log(id);
     const { categories } = this.state;
     for (var i = 0; i < categories.length; i++) {
       for (var j = 0; j < categories[i].bookmarks.length; j++) {
@@ -112,12 +110,34 @@ class App extends Component {
     this.handleDialogStatus(dialog);
   };
 
+  setCategory = (id) => {
+    const { categories } = this.state;
+    const category = categories.find((category) => category.id === id);
+    this.setState({ selectedCategory: category });
+  };
+
+  handleCategoryDetails = (category, dialog) => {
+    const { categories } = this.state;
+
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].id === category.id) {
+        categories[i] = category;
+        break;
+      }
+    }
+    this.setState({ categories });
+    this.updateList(categories);
+    this.handleDialogStatus(dialog);
+  };
+
   handleDialogStatus = (dialog) => {
     this.setState({ dialogStatus: dialog });
     if (dialog.type === "editCardItem") {
       this.handleEditBookmark(dialog.selectedId);
     }
-    console.log(dialog);
+    if (dialog.type === "editCardCategory") {
+      this.setCategory(dialog.selectedId);
+    }
   };
 
   handleSelectedCategoryId = (id) => {
@@ -132,7 +152,6 @@ class App extends Component {
           categories[i].bookmarks = categories[i].bookmarks.filter(
             (bookmark) => bookmark.id !== id
           );
-
           this.setState({ categories });
           this.updateList(categories);
           break;
@@ -195,6 +214,14 @@ class App extends Component {
                 bookmark={this.state.selectedBookmark}
                 onUpdateBookmark={this.handleUpdateBookmark}
                 onDeleteBookmark={this.handleDeleteBookMark}
+              />
+            )}
+          {this.state.dialogStatus.type === "editCardCategory" &&
+            this.state.dialogStatus.active && (
+              <EditCardCategoryDialog
+                category={this.state.selectedCategory}
+                onChangeCategoryDetails={this.handleCategoryDetails}
+                onChangeDialogStatus={this.handleDialogStatus}
               />
             )}
           <Grid container spacing={1} direction="row" alignItems="stretch">
