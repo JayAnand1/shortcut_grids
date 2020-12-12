@@ -8,6 +8,7 @@ import {
   Typography,
   Menu,
   MenuItem,
+  Badge,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
@@ -18,6 +19,7 @@ import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
 import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
 import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
 import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 const TopBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -38,7 +40,9 @@ const TopBar = (props) => {
         <Box flexGrow={1}></Box>
         <Tooltip title="Search Bookmarks">
           <IconButton>
-            <SearchIcon style={{ color: "white" }} />
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon style={{ color: "white" }} />
+            </Badge>
           </IconButton>
         </Tooltip>
         <Tooltip title="Add Elements">

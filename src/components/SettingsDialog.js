@@ -38,10 +38,10 @@ class SettingsDialog extends Component {
   };
 
   handleSave = () => {
-    this.props.onChange;
-    this.setState({
-      masterBackgroundColour: this.state.masterBackgroundColour,
-    });
+    // this.props.onChange;
+    // this.setState({
+    //   masterBackgroundColour: this.state.masterBackgroundColour,
+    // });
   };
 
   render() {

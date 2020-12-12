@@ -28,6 +28,8 @@ import { MoreVert, Add } from "@material-ui/icons";
 import CategoryCardItem from "./CategoryCardItem";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
 
 class CategoryCard extends Component {
   state = {
@@ -58,7 +60,7 @@ class CategoryCard extends Component {
   render() {
     return (
       <Grid item xs={6} sm={4} md={3}>
-        <div
+        {/* <div
           style={{
             backgroundColor: this.props.item.colour,
             borderRadius: "2px 10px 2px 10px",
@@ -72,17 +74,30 @@ class CategoryCard extends Component {
           <Typography variant="body2" style={{ color: "white" }}>
             {this.props.item.category}
           </Typography>
-        </div>
+        </div> */}
 
         <Card
           raised
+          variant="outlined"
           style={{
-            backgroundColor: this.props.item.colour,
+            backgroundColor: "transparent",
+            borderRadius: "10px",
+            borderColor: "white",
+            //backgroundColor: this.props.item.colour,
             padding: "0px 2px 0px 2px",
           }}
         >
+          <Typography
+            variant="body2"
+            style={{ color: "white", padding: "5px" }}
+          >
+            {this.props.item.category}
+          </Typography>
           <List
-            style={{ padding: "0px 0px 0px 0px", margin: "0px 2px 0px 2px" }}
+            style={{
+              padding: "0px 0px 0px 0px",
+              margin: "0px 2px 0px 2px",
+            }}
           >
             <Typography variant="subtitle2" style={{ color: "white" }}>
               <Box lineHeight="normal" m={1}>
