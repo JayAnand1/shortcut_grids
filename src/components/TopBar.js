@@ -1,12 +1,25 @@
 import React from "react";
-import { AppBar, Toolbar, Box } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import SettingsIcon from "@material-ui/icons/Settings";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  IconButton,
+  Tooltip,
+  Typography,
+  Menu,
+  MenuItem,
+  Badge,
+} from "@material-ui/core";
+import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
+import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
+import SearchIcon from "@material-ui/icons/Search";
+import GreetingMessage from "./GreetingMessage";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
+import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
+import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
+import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
+import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 const TopBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -21,31 +34,79 @@ const TopBar = (props) => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
+        <Typography variant="h5" style={{ color: "white" }}>
+          <Box fontFamily="Monospace">{<GreetingMessage />}</Box>
+        </Typography>
         <Box flexGrow={1}></Box>
-        <IconButton onClick={handleAddClick}>
-          <AddOutlinedIcon />
-        </IconButton>
-        <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Info', active: true })}>
-          <InfoOutlinedIcon />
-        </IconButton>
-        <IconButton onClick={() => props.onChangeDialogStatus({ type: 'Settings', active: true })}>
-          <SettingsIcon />
-        </IconButton>
+        <Tooltip title="Search Bookmarks">
+          <IconButton>
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon style={{ color: "white" }} />
+            </Badge>
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Add Elements">
+          <IconButton onClick={handleAddClick}>
+            <AddCircleOutlineOutlinedIcon style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
+
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
+          keepMounted
           open={Boolean(anchorEl)}
           onClose={handleAddClose}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
         >
-          <MenuItem onClick={() => props.onChangeDialogStatus({ type: 'addCategory', active: true })}>Add Category</MenuItem>
-          <MenuItem onClick={handleAddClose}>Add Sticky Notes</MenuItem>
-          <MenuItem onClick={handleAddClose}>Blah</MenuItem>
+          <MenuItem
+            dense
+            onClick={() =>
+              props.onChangeDialogStatus({ type: "addCategory", active: true })
+            }
+          >
+            <BookmarksOutlinedIcon
+              style={{ fontsize: "20", paddingRight: "10px" }}
+            />
+            Add Bookmark Group
+          </MenuItem>
+          <MenuItem dense onClick={handleAddClose}>
+            <NoteAddOutlinedIcon
+              style={{ fontsize: "20", paddingRight: "10px" }}
+            />
+            Add Sticky Note
+          </MenuItem>
+          <MenuItem dense onClick={handleAddClose}>
+            <ListAltOutlinedIcon
+              style={{ fontsize: "20", paddingRight: "10px" }}
+            />
+            Add Todo List
+          </MenuItem>
+          <MenuItem dense onClick={handleAddClose}>
+            <AccountTreeOutlinedIcon
+              style={{ fontsize: "20", paddingRight: "10px" }}
+            />
+            Add Mind Map
+          </MenuItem>
         </Menu>
 
+        <Tooltip title="Settings">
+          <IconButton
+            onClick={() =>
+              props.onChangeDialogStatus({ type: "settings", active: true })
+            }
+          >
+            <TuneRoundedIcon style={{ color: "white" }} />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default TopBar;
 
@@ -65,7 +126,6 @@ export default TopBar;
 //   const [addDialogActive, setAddDialogActive] = useState(false);
 //   const [infoDialogActive, setInfoDialogActive] = useState(false);
 //   const [settingsDialogActive, setSettingsDialogActive] = useState(false);
-
 
 //   const handleClickOpenInfo = () => {
 //     setOpenInfo(true);
@@ -161,7 +221,6 @@ export default TopBar;
 //             </Button>
 //           </DialogActions>
 //         </Dialog>
-
 
 //         <Dialog open={openAdd} onClose={handleCloseAdd}>
 //           <DialogTitle id="alert-dialog-title">Add Shortcut Card</DialogTitle>
