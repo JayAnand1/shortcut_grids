@@ -154,7 +154,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className={this.state.settings.colour}>
+      <div
+        className={this.state.settings.colour}
+        style={{ paddingBottom: "0px" }}
+      >
         <Container maxWidth="lg">
           <TopBar
             dialogComplete={this.state.dialogStatus.active}

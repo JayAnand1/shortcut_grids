@@ -39,22 +39,7 @@ const TopBar = (props) => {
           <Box fontFamily="Monospace">{<GreetingMessage />}</Box>
         </Typography>
         <Box flexGrow={1} />
-        <TextField
-          required
-          size="small"
-          id="inputLabelField"
-          label="Label"
-          variant="outlined"
-          style={{ borderRadius: "20px" }}
-        />
-        <Box flexGrow={1} />
-        <Tooltip title="Search Bookmarks">
-          <IconButton>
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon style={{ color: "white" }} />
-            </Badge>
-          </IconButton>
-        </Tooltip>
+
         <Tooltip title="Add Elements">
           <IconButton onClick={handleAddClick}>
             <AddCircleOutlineOutlinedIcon style={{ color: "white" }} />

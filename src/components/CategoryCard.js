@@ -60,28 +60,13 @@ class CategoryCard extends Component {
   render() {
     return (
       <Grid item xs={6} sm={4} md={3}>
-        {/* <div
-          style={{
-            backgroundColor: this.props.item.colour,
-            borderRadius: "2px 10px 2px 10px",
-            maxWidth: "fit-content",
-            padding: "5px 5px 5px 5px",
-            margin: "2px 0px 2px 0px",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
-            zIndex: "999",
-          }}
-        >
-          <Typography variant="body2" style={{ color: "white" }}>
-            {this.props.item.category}
-          </Typography>
-        </div> */}
-
         <Card
           variant="outlined"
           style={{
             backgroundColor: "transparent",
             borderRadius: "5px",
-            borderColor: "white",
+
+            //borderColor: "white",
             backgroundColor: this.props.item.colour,
             padding: "0px 2px 0px 2px",
           }}
@@ -125,22 +110,29 @@ class CategoryCard extends Component {
               style={{ color: "white" }}
             >
               <ListItemIcon
-                style={{ margin: "0px 0px 0px 5px", color: "white" }}
+                style={{ textAlign: "left", color: "white", opacity: "0.5" }}
               >
-                <Add fontSize="small" color="action" />
+                <Add
+                  fontSize="small"
+                  style={{ textAlign: "left", color: "white", opacity: "0.5" }}
+                />
               </ListItemIcon>
               <ListItemText
-                style={{ textAlign: "left", color: "#374036" }}
+                style={{ textAlign: "left", color: "white", opacity: "0.5" }}
                 color="action"
               >
                 Add Bookmark
               </ListItemText>
               <ListItemSecondaryAction>
-                <IconButton
-                  style={{ color: "white" }}
-                  onClick={this.handleClick}
-                >
-                  <MoreVert fontSize="small" color="action" />
+                <IconButton onClick={this.handleClick}>
+                  <MoreVert
+                    fontSize="small"
+                    style={{
+                      textAlign: "left",
+                      color: "white",
+                      opacity: "0.5",
+                    }}
+                  />
                 </IconButton>
                 <Menu
                   open={this.state.openMoreVertMenu}

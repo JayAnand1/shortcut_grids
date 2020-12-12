@@ -9,6 +9,7 @@ import {
   Radio,
   Grid,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
 import { MoreVert, Add } from "@material-ui/icons";
 import uuid from "react-uuid";
@@ -98,66 +99,57 @@ class AddCategoryDialog extends Component {
             alignItems="center"
           >
             <Typography variant="body1">Card Colour</Typography>
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#61BD4F" }}
-              checked={this.state.colour === "#61BD4F"}
-              onChange={this.inputColourHandler}
-              value="#61BD4F"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#ffffff00" }}
-              checked={this.state.colour === "#ffffff00"}
-              onChange={this.inputColourHandler}
-              value="#ffffff00"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#F2D600" }}
-              checked={this.state.colour === "#F2D600"}
-              onChange={this.inputColourHandler}
-              value="#F2D600"
-            />
+            <Tooltip title="Red">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#57D7BE" }}
+                checked={this.state.colour === "#57D7BE"}
+                onChange={this.inputColourHandler}
+                value="#57D7BE"
+              />
+            </Tooltip>
+            <Tooltip title="Orange">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#30664C" }}
+                checked={this.state.colour === "#30664C"}
+                onChange={this.inputColourHandler}
+                value="#30664C"
+              />
+            </Tooltip>
+            <Tooltip title="Yellow">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#FDBC7A" }}
+                checked={this.state.colour === "#FDBC7A"}
+                onChange={this.inputColourHandler}
+                value="#FDBC7A"
+              />
+            </Tooltip>
+            <Tooltip title="Green">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#F993A1" }}
+                checked={this.state.colour === "#F993A1"}
+                onChange={this.inputColourHandler}
+                value="#F993A1"
+              />
+            </Tooltip>
 
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#FF9F1A" }}
-              checked={this.state.colour === "#FF9F1A"}
-              onChange={this.inputColourHandler}
-              value="#FF9F1A"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#EB5A46" }}
-              checked={this.state.colour === "#EB5A46"}
-              onChange={this.inputColourHandler}
-              value="#EB5A46"
-              color="default"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#C377E0" }}
-              checked={this.state.colour === "#C377E0"}
-              onChange={this.inputColourHandler}
-              value="#C377E0"
-              color="default"
-            />
-            <Radio
-              icon={<CheckBoxOutlineBlankIcon />}
-              checkedIcon={<CheckBoxIcon />}
-              style={{ color: "#0079BF" }}
-              checked={this.state.colour === "#0079BF"}
-              onChange={this.inputColourHandler}
-              value="#0079BF"
-              color="default"
-            />
+            <Tooltip title="Blue">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#31BCCF" }}
+                checked={this.state.colour === "#31BCCF"}
+                onChange={this.inputColourHandler}
+                value="#31BCCF"
+              />
+            </Tooltip>
           </Grid>
         </DialogContent>
         <DialogActions>

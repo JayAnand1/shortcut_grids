@@ -20,6 +20,7 @@ import {
   FormControl,
   InputLabel,
   Input,
+  Tooltip,
 } from "@material-ui/core";
 import uuid from "react-uuid";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
@@ -35,9 +36,7 @@ class SettingsDialog extends Component {
 
   inputBackgroundColourHandler = (event) => {
     this.setState({ masterBackgroundColour: event.target.value });
-    this.props.onChangeBackgroundColour(
-      event.target.value
-    );
+    this.props.onChangeBackgroundColour(event.target.value);
   };
 
   handleSave = () => {
@@ -67,91 +66,101 @@ class SettingsDialog extends Component {
             alignItems="center"
           >
             <Grid item>
-              <Typography>User Name</Typography>
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-            <TextField size="small"></TextField>
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-          >
-            <Grid item>
-              <Typography>Weather/Time Zone Location</Typography>
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-            <TextField size="small"></TextField>
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-          >
-            <Grid item>
               <Typography variant="body1">Background Colour</Typography>
             </Grid>
             <Grid item>
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#61BD4F", margin: "0px", padding: "0px" }}
-                checked={
-                  this.state.masterBackgroundColour === "backgroundColour1"
-                }
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour1"
-              />
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#F2D600", marginLeft: "10px", padding: "0px" }}
-                checked={
-                  this.state.masterBackgroundColour === "backgroundColour2"
-                }
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour2"
-              />
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#FF9F1A", marginLeft: "10px", padding: "0px" }}
-                checked={
-                  this.state.masterBackgroundColour === "backgroundColour3"
-                }
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour3"
-              />
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#EB5A46", marginLeft: "10px", padding: "0px" }}
-                checked={this.state.masterBackgroundColour === "backgroundColour4"}
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour4"
-              />
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#C377E0", marginLeft: "10px", padding: "0px" }}
-                checked={this.state.masterBackgroundColour === "backgroundColour5"}
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour5"
-              />
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#0079BF", marginLeft: "10px", padding: "0px" }}
-                checked={this.state.masterBackgroundColour === "backgroundColour6"}
-                onChange={this.inputBackgroundColourHandler}
-                value="backgroundColour6"
-              />
+              <Tooltip title="Burning Orange">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{ color: "#61BD4F", margin: "0px", padding: "0px" }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour1"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour1"
+                />
+              </Tooltip>
+              <Tooltip title="Turquois Flow">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#F2D600",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour2"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour2"
+                />
+              </Tooltip>
+              <Tooltip title="Facebook Messenger">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#FF9F1A",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour3"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour3"
+                />
+              </Tooltip>
+              <Tooltip title="Ash">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#EB5A46",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour4"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour4"
+                />
+              </Tooltip>
+              <Tooltip title="Namn">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#C377E0",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour5"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour5"
+                />
+              </Tooltip>
+              <Tooltip title="Midnight City">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#0079BF",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour6"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour6"
+                />
+              </Tooltip>
             </Grid>
           </Grid>
         </DialogContent>
