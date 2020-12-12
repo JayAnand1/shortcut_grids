@@ -18,6 +18,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  CardHeader,
 } from "@material-ui/core";
 import { MoreVert, Add } from "@material-ui/icons";
 import CategoryCardItem from "./CategoryCardItem";
@@ -29,8 +30,23 @@ class CategoryCard extends Component {
     openMoreVertMenu: false,
     menuAnchor: "",
     confirmDialog: false,
+    isMouseInside: false,
+    moreVertOpacity: 0.5,
+    addBookmarkOpacity: 0.4,
+  };
+  mouseEnterMoreVert = () => {
+    this.setState({ moreVertOpacity: 1 });
+  };
+  mouseLeaveMoreVert = () => {
+    this.setState({ moreVertOpacity: 0.5 });
   };
 
+  mouseEnterAddBookmark = () => {
+    this.setState({ addBookmarkOpacity: 1 });
+  };
+  mouseLeaveAddBookmark = () => {
+    this.setState({ addBookmarkOpacity: 0.5 });
+  };
   handleConfirmDialogClick = () => {
     this.setState({ confirmDialog: true });
   };
@@ -69,30 +85,57 @@ class CategoryCard extends Component {
 
             //borderColor: "white",
             backgroundColor: this.props.item.colour,
-            padding: "0px 2px 0px 2px",
+            padding: "0px 0px 0px 0px",
           }}
         >
-          <Typography
-            noWrap
-            //props={{ maxLength: 20 }}
-            display="block"
-            variant="body1"
-            style={{
-              color: "black",
-              marginLeft: "10px",
-              marginTop: "5px",
-              paddingBottom: "0px",
-            }}
-          >
-            {this.props.item.category}
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="caption"
-            style={{ color: "black", marginLeft: "20px" }}
-          >
-            {this.props.item.categoryDescription}
-          </Typography>
+          <CardHeader
+            disableTypography
+            style={{ paddingTop: "5px" }}
+            title={
+              <Typography
+                noWrap
+                display="block"
+                variant="body1"
+                style={{
+                  color: "black",
+                  paddingBottom: "0px",
+                }}
+              >
+                {this.props.item.category}
+              </Typography>
+            }
+            subheader={
+              <Typography
+                variant="caption"
+                style={{
+                  color: "black",
+                  marginLeft: "20px",
+                  paddingTop: "0px",
+                }}
+              >
+                {this.props.item.categoryDescription}
+              </Typography>
+            }
+            action={
+              <IconButton
+                onClick={this.handleClick}
+                onMouseEnter={this.mouseEnterMoreVert}
+                onMouseLeave={this.mouseLeaveMoreVert}
+              >
+                <MoreVert
+                  fontSize="small"
+                  style={{
+                    // fontSize: "16",
+                    padding: "0px",
+                    color: "black",
+                    opacity: this.state.moreVertOpacity,
+                  }}
+                />
+              </IconButton>
+            }
+          ></CardHeader>
+          <Grid container justify="space-between"></Grid>
+
           <List
             style={{
               padding: "0px 0px 0px 0px",
@@ -109,6 +152,8 @@ class CategoryCard extends Component {
             ))}
 
             <ListItem
+              onMouseEnter={this.mouseEnterAddBookmark}
+              onMouseLeave={this.mouseLeaveAddBookmark}
               alignItems="center"
               dense
               button
@@ -120,31 +165,27 @@ class CategoryCard extends Component {
               }
               style={{ color: "white" }}
             >
-              <ListItemIcon
-                style={{ textAlign: "left", color: "white", opacity: "0.5" }}
-              >
+              <ListItemIcon>
                 <Add
                   fontSize="small"
-                  style={{ textAlign: "left", color: "white", opacity: "0.5" }}
+                  style={{
+                    textAlign: "left",
+                    color: "black",
+                    opacity: this.state.addBookmarkOpacity,
+                  }}
                 />
               </ListItemIcon>
               <ListItemText
-                style={{ textAlign: "left", color: "white", opacity: "0.5" }}
+                style={{
+                  textAlign: "left",
+                  color: "black",
+                  opacity: this.state.addBookmarkOpacity,
+                }}
                 color="action"
               >
                 Add Bookmark
               </ListItemText>
               <ListItemSecondaryAction>
-                <IconButton onClick={this.handleClick}>
-                  <MoreVert
-                    fontSize="small"
-                    style={{
-                      textAlign: "left",
-                      color: "white",
-                      opacity: "0.5",
-                    }}
-                  />
-                </IconButton>
                 <Menu
                   open={this.state.openMoreVertMenu}
                   onClose={this.handleClose}

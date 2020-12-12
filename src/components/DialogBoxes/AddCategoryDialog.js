@@ -11,10 +11,10 @@ import {
   Typography,
   Tooltip,
 } from "@material-ui/core";
-import { MoreVert, Add } from "@material-ui/icons";
 import uuid from "react-uuid";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+
 class AddCategoryDialog extends Component {
   state = {
     id: uuid(),
@@ -129,25 +129,35 @@ class AddCategoryDialog extends Component {
                 value="#FDBC7A"
               />
             </Tooltip>
-            <Tooltip title="Green">
-              <Radio
-                icon={<CheckBoxOutlineBlankIcon />}
-                checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#F993A1" }}
-                checked={this.state.colour === "#F993A1"}
-                onChange={this.inputColourHandler}
-                value="#F993A1"
-              />
-            </Tooltip>
-
             <Tooltip title="Blue">
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#31BCCF" }}
-                checked={this.state.colour === "#31BCCF"}
+                style={{ color: "#428CD4" }}
+                checked={this.state.colour === "#428CD4"}
                 onChange={this.inputColourHandler}
-                value="#31BCCF"
+                value="#428CD4"
+              />
+            </Tooltip>
+
+            <Tooltip title="Grey">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#D6DDE0" }}
+                checked={this.state.colour === "#D6DDE0"}
+                onChange={this.inputColourHandler}
+                value="#D6DDE0"
+              />
+            </Tooltip>
+            <Tooltip title="Teal">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#0F9EAB" }}
+                checked={this.state.colour === "#0F9EAB"}
+                onChange={this.inputColourHandler}
+                value="#0F9EAB"
               />
             </Tooltip>
           </Grid>

@@ -35,13 +35,11 @@ const TopBar = (props) => {
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
         <Box flexGrow={1} />
-
         <Tooltip title="Add Elements">
           <IconButton onClick={handleAddClick}>
-            <AddCircleOutlineOutlinedIcon style={{ color: "black" }} />
+            <AddCircleOutlineOutlinedIcon style={{ color: "white" }} />
           </IconButton>
         </Tooltip>
-
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
@@ -85,7 +83,7 @@ const TopBar = (props) => {
               props.onChangeDialogStatus({ type: "settings", active: true })
             }
           >
-            <TuneRoundedIcon style={{ color: "black" }} />
+            <TuneRoundedIcon style={{ color: "white" }} />
           </IconButton>
         </Tooltip>
       </Toolbar>

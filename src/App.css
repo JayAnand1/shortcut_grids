@@ -16,7 +16,12 @@
 }
 
 .backgroundColour1 {
-  background: #dfc2c4; /* fallback for old browsers */
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
 
   min-height: 100%;
   min-width: 100%;
@@ -26,18 +31,7 @@
 }
 
 .backgroundColour2 {
-  background: #136a8a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #267871,
-    #136a8a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #267871,
-    #136a8a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: #00564d; /* fallback for old browsers */
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -48,17 +42,7 @@
 }
 
 .backgroundColour3 {
-  background: #00c6ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #0072ff,
-    #00c6ff
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #0072ff,
-    #00c6ff
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #22272c;
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -67,17 +51,7 @@
 }
 
 .backgroundColour4 {
-  background: #606c88; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #3f4c6b,
-    #606c88
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #3f4c6b,
-    #606c88
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #da5a38;
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -86,17 +60,7 @@
 }
 
 .backgroundColour5 {
-  background: #a73737; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #7a2828,
-    #a73737
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #7a2828,
-    #a73737
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #c594c5;
 
   min-height: 100%;
   min-width: 100%;
@@ -109,17 +73,7 @@
 }
 
 .backgroundColour6 {
-  background: #232526; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #414345,
-    #232526
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #414345,
-    #232526
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #958a56;
 
   min-height: 100%;
   min-width: 100%;
@@ -134,17 +88,7 @@
 }
 
 .backgroundColour7 {
-  background: #121212; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #121212,
-    #121212
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #121212,
-    #121212
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #abb2bf;
   min-height: 100%;
   min-width: 100%;
   position: absolute;

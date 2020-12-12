@@ -34,7 +34,7 @@ class CategoryCardItem extends Component {
             padding: "5px 5px 5px 5px",
             margin: "3px 0px 3px 0px",
             borderRadius: "0px",
-            border: "1px solid rgba(255, 255, 255, .4)",
+            border: "1px solid rgba(0, 0, 0, .1)",
             backgroundColor: "transparent",
           }}
           onClick={() => window.open(this.props.item.url, "_self")}
@@ -57,7 +57,7 @@ class CategoryCardItem extends Component {
             style={{
               padding: "0px 0px 0px 0px",
               margin: "2px 0px 2px 0px",
-              color: "white",
+              color: "black",
             }}
             primary={this.props.item.label}
           />
