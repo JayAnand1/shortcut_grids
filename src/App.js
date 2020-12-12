@@ -10,6 +10,7 @@ import SettingsDialog from "./components/SettingsDialog";
 import EditCardItemDialog from "./components/EditCardItemDialog";
 import CategoryCardItem from "./components/CategoryCardItem";
 import { ColorizeRounded } from "@material-ui/icons";
+import EditCardCategoryDialog from "./components/EditCardCategoryDialog";
 
 class App extends Component {
   state = {
@@ -22,6 +23,7 @@ class App extends Component {
     masterBackgroundColour: null,
     settings: {},
     selectedBookmark: null,
+    selectedCategory: null
   };
 
   updateList = (newList) => {
@@ -112,10 +114,35 @@ class App extends Component {
     this.handleDialogStatus(dialog);
   };
 
+  setCategory = (id) => {
+    const { categories } = this.state;
+    const category = categories.find(category => category.id === id);
+    console.log(categories.find(category => category.id === id));
+    console.log(category);
+    this.setState({ selectedCategory: category });
+  }
+
+  handleCategoryDetails = (category, dialog) => {
+    const { categories } = this.state;
+
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].id === category.id) {
+        categories[i] = category;
+        break;
+      }
+    }
+    this.setState({ categories });
+    this.updateList(categories);
+    this.handleDialogStatus(dialog);
+  }
+
   handleDialogStatus = (dialog) => {
     this.setState({ dialogStatus: dialog });
     if (dialog.type === "editCardItem") {
       this.handleEditBookmark(dialog.selectedId);
+    }
+    if (dialog.type === "editCardCategory") {
+      this.setCategory(dialog.selectedId);
     }
     console.log(dialog);
   };
@@ -132,7 +159,6 @@ class App extends Component {
           categories[i].bookmarks = categories[i].bookmarks.filter(
             (bookmark) => bookmark.id !== id
           );
-
           this.setState({ categories });
           this.updateList(categories);
           break;
@@ -153,8 +179,9 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.selectedCategory)
     return (
-      <div className={this.state.settings.colour}>
+      <div className={this.state.settings.colour} style={{ paddingBottom: "20px" }}>
         <Container maxWidth="lg">
           <TopBar
             dialogComplete={this.state.dialogStatus.active}
@@ -194,6 +221,14 @@ class App extends Component {
                 onDeleteBookmark={this.handleDeleteBookMark}
               />
             )}
+          {this.state.dialogStatus.type === "editCardCategory" &&
+            this.state.dialogStatus.active && (
+              <EditCardCategoryDialog
+                category={this.state.selectedCategory}
+                onChangeCategoryDetails={this.handleCategoryDetails}
+                onChangeDialogStatus={this.handleDialogStatus}
+              />
+            )}
           <Grid container spacing={1} direction="row" alignItems="stretch">
             {this.state.categories.map((item) => (
               <CategoryCard
@@ -202,6 +237,7 @@ class App extends Component {
                 onDelete={this.handleDelete}
                 onAddNewBookmarkDialog={this.handleNewBookmarkDialog}
                 onChangeDialogStatus={this.handleDialogStatus}
+
               />
             ))}
           </Grid>

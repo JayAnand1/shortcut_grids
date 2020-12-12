@@ -57,6 +57,11 @@ class CategoryCard extends Component {
     this.setState({ menuAnchor: null });
   };
 
+  handleEditCategory = () => {
+    this.handleClose();
+    this.props.onChangeDialogStatus({ type: "editCardCategory", active: true, selectedId: this.props.item.id });
+  }
+
   render() {
     return (
       <Grid item xs={6} sm={4} md={3}>
@@ -152,7 +157,7 @@ class CategoryCard extends Component {
                     horizontal: "left",
                   }}
                 >
-                  <MenuItem onClick={this.handleClose}>
+                  <MenuItem onClick={this.handleEditCategory}>
                     <Grid container>
                       <EditIcon
                         style={{ marginRight: "15px", fontSize: "20" }}

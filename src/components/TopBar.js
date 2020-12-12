@@ -32,6 +32,13 @@ const TopBar = (props) => {
     setAnchorEl(null);
   };
 
+  const handleMenuItem = () => {
+    handleAddClose();
+    props.onChangeDialogStatus({ type: "addCategory", active: true });
+
+  }
+
+
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
@@ -64,7 +71,6 @@ const TopBar = (props) => {
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
-          keepMounted
           open={Boolean(anchorEl)}
           onClose={handleAddClose}
           getContentAnchorEl={null}
@@ -75,9 +81,7 @@ const TopBar = (props) => {
         >
           <MenuItem
             dense
-            onClick={() =>
-              props.onChangeDialogStatus({ type: "addCategory", active: true })
-            }
+            onClick={handleMenuItem}
           >
             <BookmarksOutlinedIcon
               style={{ fontsize: "20", paddingRight: "10px" }}
