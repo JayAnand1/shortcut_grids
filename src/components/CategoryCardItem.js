@@ -37,9 +37,11 @@ class CategoryCardItem extends Component {
 
   mouseEnter = () => {
     this.setState({ isMouseInside: true });
+    console.log(this.state.isMouseInside);
   };
   mouseLeave = () => {
     this.setState({ isMouseInside: false });
+    console.log(this.state.isMouseInside);
   };
 
   render() {
@@ -53,12 +55,16 @@ class CategoryCardItem extends Component {
           dense
           divider
           style={{
-            padding: "0px 5px 0px 5px",
-            margin: "2px 0px 2px 0px",
-            borderRadius: "2px",
+            padding: "5px 5px 5px 5px",
+            margin: "3px 0px 3px 0px",
+            borderRadius: "0px",
+            borderWidth: "1px",
+            borderStyle: "solid",
+            borderColor: "white",
+
             backgroundColor: "transparent",
-            boxShadow:
-              "0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08)",
+            // boxShadow:
+            //   "0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08)",
           }}
           onClick={() => window.open(this.props.item.url, "_self")}
         >

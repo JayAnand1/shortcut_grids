@@ -9,6 +9,7 @@ import {
   Menu,
   MenuItem,
   Badge,
+  TextField,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import TuneRoundedIcon from "@material-ui/icons/TuneRounded";
@@ -37,7 +38,16 @@ const TopBar = (props) => {
         <Typography variant="h5" style={{ color: "white" }}>
           <Box fontFamily="Monospace">{<GreetingMessage />}</Box>
         </Typography>
-        <Box flexGrow={1}></Box>
+        <Box flexGrow={1} />
+        <TextField
+          required
+          size="small"
+          id="inputLabelField"
+          label="Label"
+          variant="outlined"
+          style={{ borderRadius: "20px" }}
+        />
+        <Box flexGrow={1} />
         <Tooltip title="Search Bookmarks">
           <IconButton>
             <Badge badgeContent={4} color="secondary">

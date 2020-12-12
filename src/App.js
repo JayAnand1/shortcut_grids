@@ -19,7 +19,7 @@ class App extends Component {
     snackBarMessage: "",
     snackBarSeverity: "",
     selectedCategoryId: null,
-    masterBackgroundColour: "backgroundColour7",
+    masterBackgroundColour: "backgroundColour6",
   };
 
   updateList = (newList) => {

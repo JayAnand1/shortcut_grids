@@ -77,13 +77,12 @@ class CategoryCard extends Component {
         </div> */}
 
         <Card
-          raised
           variant="outlined"
           style={{
             backgroundColor: "transparent",
-            borderRadius: "10px",
+            borderRadius: "5px",
             borderColor: "white",
-            //backgroundColor: this.props.item.colour,
+            backgroundColor: this.props.item.colour,
             padding: "0px 2px 0px 2px",
           }}
         >
