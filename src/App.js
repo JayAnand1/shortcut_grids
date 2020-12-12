@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Component } from "react";
+import React, { Component, state } from "react";
 import { Container, Snackbar, Grid } from "@material-ui/core";
 import TopBar from "./components/TopBar";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -14,12 +14,14 @@ import { ColorizeRounded } from "@material-ui/icons";
 class App extends Component {
   state = {
     categories: [], // {label, url, color, icon} {categoryLabel : "", categoryDescription : "",  bookmarks : [{ label, }], id: }
-    dialogStatus: { type: "", active: false }, // {type, active}
+    dialogStatus: { type: "", active: false, selectedId: null }, // {type, active}
     showSnackBar: false,
     snackBarMessage: "",
     snackBarSeverity: "",
     selectedCategoryId: null,
-    masterBackgroundColour: "backgroundColour7",
+    masterBackgroundColour: null,
+    settings: {},
+    selectedBookmark: null,
   };
 
   updateList = (newList) => {
@@ -76,27 +78,87 @@ class App extends Component {
   };
 
   handleBackgroundColour = (colour) => {
-    this.setState({ masterBackgroundColour: colour });
+    const { settings } = this.state;
+    settings.colour = colour;
+    this.setState({ settings });
+    localStorage.setItem("settings", JSON.stringify(settings));
   };
+
+  handleEditBookmark = (id) => {
+    console.log(id);
+    const { categories } = this.state;
+    for (var i = 0; i < categories.length; i++) {
+      for (var j = 0; j < categories[i].bookmarks.length; j++) {
+        if (categories[i].bookmarks[j].id === id) {
+          this.setState({ selectedBookmark: categories[i].bookmarks[j] });
+          break;
+        }
+      }
+    }
+  }
+
+  handleUpdateBookmark = (bookmark, dialog) => {
+
+    const { categories } = this.state;
+    for (var i = 0; i < categories.length; i++) {
+      for (var j = 0; j < categories[i].bookmarks.length; j++) {
+        if (categories[i].bookmarks[j].id === bookmark.id) {
+          categories[i].bookmarks[j] = bookmark;
+          this.setState({ categories });
+          this.updateList(categories);
+          break;
+        }
+      }
+    }
+    this.handleDialogStatus(dialog);
+
+  }
 
   handleDialogStatus = (dialog) => {
     this.setState({ dialogStatus: dialog });
+    if (dialog.type === "editCardItem") {
+      this.handleEditBookmark(dialog.selectedId);
+    }
+    console.log(dialog);
   };
 
   handleSelectedCategoryId = (id) => {
     this.setState({ selectedCategoryId: id });
   };
 
+
+  handleDeleteBookMark = (id, dialog) => {
+
+    const { categories } = this.state;
+    for (var i = 0; i < categories.length; i++) {
+      for (var j = 0; j < categories[i].bookmarks.length; j++) {
+        if (categories[i].bookmarks[j].id === id) {
+          categories[i].bookmarks = categories[i].bookmarks.filter((bookmark) => bookmark.id !== id);
+
+          this.setState({ categories });
+          this.updateList(categories);
+          break;
+        }
+      }
+    }
+    this.handleDialogStatus(dialog);
+
+  }
+
   componentDidMount() {
     var categories = localStorage.getItem("categories");
     var categories = JSON.parse(categories) ?? [];
+    var settings = JSON.parse(localStorage.getItem("settings")) ?? {
+      colour: "backgroundColour1"
+    };
     this.setState({ categories });
+    this.setState({ settings });
   }
 
+
   render() {
-    console.log(this.state.masterBackgroundColour);
     return (
-      <div className={this.state.masterBackgroundColour}>
+      <div className={this.state.settings.colour}>
         <Container maxWidth="lg">
           <TopBar
             dialogComplete={this.state.dialogStatus.active}
@@ -123,6 +185,7 @@ class App extends Component {
                 onAddNewBookmark={this.handleSettings}
                 onChangeDialogStatus={this.handleDialogStatus}
                 onChangeBackgroundColour={this.handleBackgroundColour}
+                masterBackgroundColour={this.state.settings.colour}
               />
             )}
           {this.state.dialogStatus.type === "editCardItem" &&
@@ -130,6 +193,9 @@ class App extends Component {
               <EditCardItemDialog
                 onAddNewBookmark={this.handleNewBookmark}
                 onChangeDialogStatus={this.handleDialogStatus}
+                bookmark={this.state.selectedBookmark}
+                onUpdateBookmark={this.handleUpdateBookmark}
+                onDeleteBookmark={this.handleDeleteBookMark}
               />
             )}
           <Grid container spacing={1} direction="row" alignItems="stretch">

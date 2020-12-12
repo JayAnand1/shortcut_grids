@@ -29,12 +29,15 @@ class SettingsDialog extends Component {
   state = {
     id: uuid(),
     category: "",
-    masterBackgroundColour: "",
+    masterBackgroundColour: this.props.masterBackgroundColour,
     showError: false,
   };
 
   inputBackgroundColourHandler = (event) => {
     this.setState({ masterBackgroundColour: event.target.value });
+    this.props.onChangeBackgroundColour(
+      event.target.value
+    );
   };
 
   handleSave = () => {
@@ -99,53 +102,55 @@ class SettingsDialog extends Component {
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#61BD4F", margin: "0px", padding: "0px" }}
-                // checked={
-                //   this.state.masterBackgroundColour === "#backgroundColour4"
-                // }
-                // onChange={this.props.onChangeBackgroundColour("backgroundColour1")}
-                // value="backgroundColor1"
+                checked={
+                  this.state.masterBackgroundColour === "backgroundColour1"
+                }
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColour1"
               />
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#F2D600", marginLeft: "10px", padding: "0px" }}
-                //checked={this.props.onChangeBackgroundColour("backgroundColour2")}
-                onChange={this.props.onChangeBackgroundColour(
-                  "backgroundColour2"
-                )}
-                value="backgroundColor2"
+                checked={
+                  this.state.masterBackgroundColour === "backgroundColour2"
+                }
+                onChange={this.inputBackgroundColourHandler}
+                value="backgroundColour2"
               />
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#FF9F1A", marginLeft: "10px", padding: "0px" }}
-                //checked={this.state.masterBackgroundColour === "backgroundColour3"}
+                checked={
+                  this.state.masterBackgroundColour === "backgroundColour3"
+                }
                 onChange={this.inputBackgroundColourHandler}
-                value="backgroundColor3"
+                value="backgroundColour3"
               />
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#EB5A46", marginLeft: "10px", padding: "0px" }}
-                //checked={this.state.masterBackgroundColour === "backgroundColour4"}
+                checked={this.state.masterBackgroundColour === "backgroundColour4"}
                 onChange={this.inputBackgroundColourHandler}
-                value="backgroundColor4"
+                value="backgroundColour4"
               />
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#C377E0", marginLeft: "10px", padding: "0px" }}
-                //={this.state.masterBackgroundColour === "backgroundColour5"}
+                checked={this.state.masterBackgroundColour === "backgroundColour5"}
                 onChange={this.inputBackgroundColourHandler}
-                value="backgroundColor5"
+                value="backgroundColour5"
               />
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
                 style={{ color: "#0079BF", marginLeft: "10px", padding: "0px" }}
-                //checked={this.state.masterBackgroundColour === "backgroundColour6"}
+                checked={this.state.masterBackgroundColour === "backgroundColour6"}
                 onChange={this.inputBackgroundColourHandler}
-                value="backgroundColor6"
+                value="backgroundColour6"
               />
             </Grid>
           </Grid>

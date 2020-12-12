@@ -88,6 +88,7 @@ class CategoryCardItem extends Component {
               <IconButton
                 onClick={() =>
                   this.props.onChangeDialogStatus({
+                    selectedId: this.props.item.id,
                     type: "editCardItem",
                     active: true,
                   })

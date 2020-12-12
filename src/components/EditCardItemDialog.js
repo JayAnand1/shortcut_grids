@@ -9,9 +9,9 @@ import uuid from "react-uuid";
 
 class EditCardItemDialog extends Component {
   state = {
-    id: uuid(),
-    label: "",
-    url: "",
+    id: this.props.bookmark.id,
+    label: this.props.bookmark.label,
+    url: this.props.bookmark.url,
     showLabelError: false,
     showUrlError: false,
   };
@@ -35,8 +35,8 @@ class EditCardItemDialog extends Component {
         label: this.state.label,
         url: this.state.url,
       };
-      this.props.onAddNewBookmark(bookmark, this.props.categoryId, {
-        type: "addBookmark",
+      this.props.onUpdateBookmark(bookmark, {
+        type: "",
         active: false,
       });
     }
@@ -66,6 +66,7 @@ class EditCardItemDialog extends Component {
             label="Label"
             variant="outlined"
             onChange={this.inputLabelHandler}
+            defaultValue={this.state.label}
             helperText={
               this.state.showLabelError ? "Empty Field: Please enter label" : ""
             }
@@ -79,7 +80,7 @@ class EditCardItemDialog extends Component {
             label="URL"
             variant="outlined"
             onChange={this.inputURLHandler}
-            defaultValue="https://"
+            defaultValue={this.state.url}
             helperText={
               this.state.showUrlError ? "Empty Field: Please enter url" : ""
             }
@@ -97,7 +98,7 @@ class EditCardItemDialog extends Component {
           >
             Close
           </Button>
-          <Button color="secondary">Delete Bookmark</Button>
+          <Button color="secondary" onClick={() => this.props.onDeleteBookmark(this.state.id, { type: "", active: false })}>Delete Bookmark</Button>
         </DialogActions>
       </Dialog>
     );
