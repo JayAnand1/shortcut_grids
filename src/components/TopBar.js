@@ -6,6 +6,7 @@ import {
   IconButton,
   Tooltip,
   Menu,
+  OutlinedInput,
   MenuItem,
 } from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
@@ -14,6 +15,7 @@ import BookmarksOutlinedIcon from "@material-ui/icons/BookmarksOutlined";
 import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
 import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
 import AccountTreeOutlinedIcon from "@material-ui/icons/AccountTreeOutlined";
+import SearchOutlined from "@material-ui/icons/SearchOutlined";
 
 const TopBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -34,6 +36,22 @@ const TopBar = (props) => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
+        <OutlinedInput
+          startAdornment={
+            <SearchOutlined style={{ color: "white", marginRight: "10px" }} />
+          }
+          style={{
+            borderRadius: "20px",
+            color: "white",
+            opacity: "0.8",
+            borderColor: "white",
+            paddingTop: "0px",
+            paddingBottom: "0px",
+          }}
+          variant="outlined"
+          margin="dense"
+          placeholder="Search Bookmarks..."
+        ></OutlinedInput>
         <Box flexGrow={1} />
         <Tooltip title="Add Elements">
           <IconButton onClick={handleAddClick}>

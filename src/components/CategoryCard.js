@@ -82,8 +82,6 @@ class CategoryCard extends Component {
           style={{
             backgroundColor: "transparent",
             borderRadius: "5px",
-
-            //borderColor: "white",
             backgroundColor: this.props.item.colour,
             padding: "0px 0px 0px 0px",
           }}
@@ -109,7 +107,7 @@ class CategoryCard extends Component {
                 variant="caption"
                 style={{
                   color: "black",
-                  marginLeft: "20px",
+                  //marginLeft: "20px",
                   paddingTop: "0px",
                 }}
               >

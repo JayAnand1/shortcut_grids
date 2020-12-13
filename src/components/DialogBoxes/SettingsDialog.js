@@ -9,6 +9,7 @@ import {
   Grid,
   Typography,
   Tooltip,
+  Avatar,
 } from "@material-ui/core";
 import uuid from "react-uuid";
 import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
@@ -39,6 +40,7 @@ class SettingsDialog extends Component {
         }
       >
         <DialogTitle id="alert-dialog-title">Settings</DialogTitle>
+
         <DialogContent>
           <Grid
             container
@@ -167,11 +169,15 @@ class SettingsDialog extends Component {
           </Grid>
         </DialogContent>
         <DialogContent>
-          <center>
-            <Typography variant="body2">
+          <Grid container alignItems="center" justify="center">
+            <Avatar
+              style={{ height: "50px", width: "50px", marginRight: "15px" }}
+              src="..\logo192.png"
+            ></Avatar>
+            <Typography variant="body2" display="inline">
               Copyright © 2020. All Rights Reserved
             </Typography>
-          </center>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button
