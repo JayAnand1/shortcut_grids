@@ -41,7 +41,7 @@ class App extends Component {
     }
     this.setState({ categories: newCategories });
     this.updateList(newCategories);
-    this.handleSnackBar(`Add Bookmark to ${category.category}`, "info");
+    this.handleSnackBar(`Add Bookmark to ${category.category}`, "success");
     this.handleDialogStatus(dialog);
   };
 
@@ -54,14 +54,14 @@ class App extends Component {
     let newList = this.state.categories.filter((item) => item.id !== id);
     this.setState({ categories: newList });
     this.updateList(newList);
-    this.handleSnackBar("Deleted Successfully", "info");
+    this.handleSnackBar("Category Deleted Successfully", "info");
   };
 
   handleNewCategory = (category, dialog) => {
     const newCategories = this.state.categories.concat(category);
     this.setState({ categories: newCategories });
     this.updateList(newCategories);
-    this.handleSnackBar("Added Successfully", "success");
+    this.handleSnackBar("Category Created Successfully", "success");
     this.handleDialogStatus(dialog);
   };
 
@@ -107,6 +107,7 @@ class App extends Component {
         }
       }
     }
+    this.handleSnackBar("Bookmark Edited Sucessfully", "success");
     this.handleDialogStatus(dialog);
   };
 
@@ -158,6 +159,7 @@ class App extends Component {
         }
       }
     }
+    this.handleSnackBar("Bookmark Deleted Successfully", "info");
     this.handleDialogStatus(dialog);
   };
 
@@ -214,6 +216,7 @@ class App extends Component {
                 bookmark={this.state.selectedBookmark}
                 onUpdateBookmark={this.handleUpdateBookmark}
                 onDeleteBookmark={this.handleDeleteBookMark}
+                handleSnackBar={this.handleSnackBar}
               />
             )}
           {this.state.dialogStatus.type === "editCardCategory" &&
@@ -222,6 +225,7 @@ class App extends Component {
                 category={this.state.selectedCategory}
                 onChangeCategoryDetails={this.handleCategoryDetails}
                 onChangeDialogStatus={this.handleDialogStatus}
+                handleSnackBar={this.handleSnackBar}
               />
             )}
           <Grid container spacing={1} direction="row" alignItems="stretch">
