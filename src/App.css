@@ -95,3 +95,21 @@
   top: 0;
   left: 0;
 }
+
+.backgroundColour8 {
+  background: black;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.backgroundColour9 {
+  background: #668de5;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

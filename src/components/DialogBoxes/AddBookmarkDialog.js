@@ -53,7 +53,7 @@ class AddBookmarkDialog extends Component {
           this.props.onChangeDialogStatus({ type: "Add", active: false })
         }
       >
-        <DialogTitle id="alert-dialog-title">Add new bookmark</DialogTitle>
+        <DialogTitle id="alert-dialog-title">Add Bookmark</DialogTitle>
         <DialogContent>
           <TextField
             inputProps={{ maxLength: 20 }}
@@ -66,7 +66,9 @@ class AddBookmarkDialog extends Component {
             variant="outlined"
             onChange={this.inputLabelHandler}
             helperText={
-              this.state.showLabelError ? "Empty Field: Please enter label" : ""
+              this.state.showLabelError
+                ? "Empty Field: Please enter Bookmark Label"
+                : ""
             }
           />
           &nbsp;
@@ -81,7 +83,9 @@ class AddBookmarkDialog extends Component {
             onChange={this.inputURLHandler}
             defaultValue="https://"
             helperText={
-              this.state.showUrlError ? "Empty Field: Please enter url" : ""
+              this.state.showUrlError
+                ? "Empty Field: Please Enter Bookmark URL"
+                : ""
             }
           />
         </DialogContent>

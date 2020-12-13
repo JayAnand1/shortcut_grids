@@ -77,7 +77,7 @@ class AddCategoryDialog extends Component {
             onChange={this.inputCategoryHandler}
             //value={this.inputCategoryHandler}
             helperText={
-              this.state.showError ? "Empty Field: Please enter Category" : ""
+              this.state.showError ? "Empty Field: Please enter Group Name" : ""
             }
           />
         </DialogContent>
@@ -98,25 +98,25 @@ class AddCategoryDialog extends Component {
             justify="space-evenly"
             alignItems="center"
           >
-            <Typography variant="body1">Card Colour</Typography>
+            <Typography variant="body1">Group Colour</Typography>
             <Tooltip title="Red">
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#D61A3C" }}
-                checked={this.state.colour === "#D61A3C"}
+                style={{ color: "#E65E7E" }}
+                checked={this.state.colour === "#E65E7E"}
                 onChange={this.inputColourHandler}
-                value="#D61A3C"
+                value="#E65E7E"
               />
             </Tooltip>
             <Tooltip title="Orange">
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#F47B3D" }}
-                checked={this.state.colour === "#F47B3D"}
+                style={{ color: "#E68767" }}
+                checked={this.state.colour === "#E68767"}
                 onChange={this.inputColourHandler}
-                value="#F47B3D"
+                value="#E68767"
               />
             </Tooltip>
             <Tooltip title="Yellow">
@@ -133,10 +133,10 @@ class AddCategoryDialog extends Component {
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#428CD4" }}
-                checked={this.state.colour === "#428CD4"}
+                style={{ color: "#067BCF" }}
+                checked={this.state.colour === "#067BCF"}
                 onChange={this.inputColourHandler}
-                value="#428CD4"
+                value="#067BCF"
               />
             </Tooltip>
 
@@ -144,20 +144,30 @@ class AddCategoryDialog extends Component {
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#D6DDE0" }}
-                checked={this.state.colour === "#D6DDE0"}
+                style={{ color: "#838383" }}
+                checked={this.state.colour === "#838383"}
                 onChange={this.inputColourHandler}
-                value="#D6DDE0"
+                value="#838383"
               />
             </Tooltip>
-            <Tooltip title="Teal">
+            <Tooltip title="Turquoise">
               <Radio
                 icon={<CheckBoxOutlineBlankIcon />}
                 checkedIcon={<CheckBoxIcon />}
-                style={{ color: "#0F9EAB" }}
-                checked={this.state.colour === "#0F9EAB"}
+                style={{ color: "#27BBCF" }}
+                checked={this.state.colour === "#27BBCF"}
                 onChange={this.inputColourHandler}
-                value="#0F9EAB"
+                value="#27BBCF"
+              />
+            </Tooltip>
+            <Tooltip title="Green">
+              <Radio
+                icon={<CheckBoxOutlineBlankIcon />}
+                checkedIcon={<CheckBoxIcon />}
+                style={{ color: "#44CF9A" }}
+                checked={this.state.colour === "#44CF9A"}
+                onChange={this.inputColourHandler}
+                value="#44CF9A"
               />
             </Tooltip>
           </Grid>

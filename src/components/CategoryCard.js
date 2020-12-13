@@ -95,7 +95,7 @@ class CategoryCard extends Component {
                 display="block"
                 variant="body1"
                 style={{
-                  color: "black",
+                  color: "white",
                   paddingBottom: "0px",
                 }}
               >
@@ -106,7 +106,7 @@ class CategoryCard extends Component {
               <Typography
                 variant="caption"
                 style={{
-                  color: "black",
+                  color: "white",
                   //marginLeft: "20px",
                   paddingTop: "0px",
                 }}

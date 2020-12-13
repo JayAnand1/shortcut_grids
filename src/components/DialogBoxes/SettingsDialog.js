@@ -52,22 +52,6 @@ class SettingsDialog extends Component {
               <Typography variant="body1">Background Colour</Typography>
             </Grid>
             <Grid item>
-              <Tooltip title="Slightly Black">
-                <Radio
-                  icon={<CheckBoxOutlineBlankIcon />}
-                  checkedIcon={<CheckBoxIcon />}
-                  style={{
-                    color: "#22272C",
-                    marginLeft: "10px",
-                    padding: "0px",
-                  }}
-                  checked={
-                    this.state.masterBackgroundColour === "backgroundColour3"
-                  }
-                  onChange={this.inputBackgroundColourHandler}
-                  value="backgroundColour3"
-                />
-              </Tooltip>
               <Tooltip title="Not So Blue">
                 <Radio
                   icon={<CheckBoxOutlineBlankIcon />}
@@ -115,6 +99,22 @@ class SettingsDialog extends Component {
                   }
                   onChange={this.inputBackgroundColourHandler}
                   value="backgroundColour4"
+                />
+              </Tooltip>
+              <Tooltip title="Cosmo Blue">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#668DE5",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour9"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour9"
                 />
               </Tooltip>
               <Tooltip title="Passionate Pink">
@@ -165,6 +165,38 @@ class SettingsDialog extends Component {
                   value="backgroundColour7"
                 />
               </Tooltip>
+              <Tooltip title="Slightly Black">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "#22272C",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour3"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour3"
+                />
+              </Tooltip>
+              <Tooltip title="Complete Darkness">
+                <Radio
+                  icon={<CheckBoxOutlineBlankIcon />}
+                  checkedIcon={<CheckBoxIcon />}
+                  style={{
+                    color: "black",
+                    marginLeft: "10px",
+                    padding: "0px",
+                  }}
+                  checked={
+                    this.state.masterBackgroundColour === "backgroundColour8"
+                  }
+                  onChange={this.inputBackgroundColourHandler}
+                  value="backgroundColour8"
+                />
+              </Tooltip>
             </Grid>
           </Grid>
         </DialogContent>
@@ -175,7 +207,7 @@ class SettingsDialog extends Component {
               src="..\logo192.png"
             ></Avatar>
             <Typography variant="body2" display="inline">
-              Copyright © 2020. All Rights Reserved
+              Copyright Supercharfasdasdsa © 2020. All Rights Reserved
             </Typography>
           </Grid>
         </DialogContent>

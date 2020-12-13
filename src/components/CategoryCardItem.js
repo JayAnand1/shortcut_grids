@@ -57,7 +57,7 @@ class CategoryCardItem extends Component {
             style={{
               padding: "0px 0px 0px 0px",
               margin: "2px 0px 2px 0px",
-              color: "black",
+              color: "white",
             }}
             primary={this.props.item.label}
           />

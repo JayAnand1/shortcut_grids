@@ -86,10 +86,11 @@ class EditCardItemDialog extends Component {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleSubmit} color="primary">
+          <Button size="small" onClick={this.handleSubmit} color="primary">
             Save
           </Button>
           <Button
+            size="small"
             onClick={() =>
               this.props.onChangeDialogStatus({ type: "Add", active: false })
             }
@@ -98,6 +99,7 @@ class EditCardItemDialog extends Component {
             Close
           </Button>
           <Button
+            size="small"
             color="secondary"
             onClick={() =>
               this.props.onDeleteBookmark(this.state.id, {
